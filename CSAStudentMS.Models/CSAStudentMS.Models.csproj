@@ -34,9 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Announcement.cs" />
     <Compile Include="BundyClock.cs" />
     <Compile Include="CARE.cs" />
     <Compile Include="CSAStaff.cs" />
+    <Compile Include="ISalary.cs" />
     <Compile Include="PeerAdviser.cs" />
     <Compile Include="PEERS.cs" />
     <Compile Include="Session.cs" />

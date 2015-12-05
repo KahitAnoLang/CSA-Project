@@ -9,7 +9,7 @@ namespace CSAStudentMS.Models
     public class CSAStaff : User
     {
         private string name, username, password;
-        public CSAStaff(int idnum, string name):base(idnum)
+        public CSAStaff(string idnum, string name):base(idnum)
         {
             this.name = name;
         }

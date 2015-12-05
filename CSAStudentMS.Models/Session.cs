@@ -13,7 +13,7 @@ namespace CSAStudentMS.Models
         private TimeSpan duration;
         private string subject, sessionName;
         private DateTime timeStart, timeEnd;
-        public Session(int idnumA, <int> idnumP, string subject, DateTime timeStart)
+        public Session(int idnumA, int idnumP, string subject, DateTime timeStart)
         {
             this.idnumA = idnumA;
             this.idnumP = idnumP;

@@ -7,14 +7,14 @@ namespace CSAStudentMS.Models
 {
     public abstract class User
     {
-        private int idnum;
-        public User(int idnum)
+        private string idnum;
+        public User(string idnum)
         {
             this.idnum = idnum;
         }
        
 
-        public int IdNum
+        public string IdNum
         {
             get { return idnum; }
             set { idnum = value; }

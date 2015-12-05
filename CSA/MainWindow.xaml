@@ -239,7 +239,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button x:Name="AddAviserBtn" Content="➕ Add Adviser" Foreground="White"  
+                <Button x:Name="AddAdviserBtn" Content="➕ Add Adviser" Foreground="White"  
             	        Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
             	        Style="{DynamicResource MyButtonStyle}" 
             	        FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" MinWidth="105" HorizontalContentAlignment="Center" Margin="86,194,225,131"/>
