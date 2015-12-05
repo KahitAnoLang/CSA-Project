@@ -34,22 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ASPIRE.cs" />
     <Compile Include="BundyClock.cs" />
     <Compile Include="CARE.cs" />
     <Compile Include="CSAStaff.cs" />
-    <Compile Include="EWP.cs" />
-    <Compile Include="FinalProbationaryStudent.cs" />
     <Compile Include="PeerAdviser.cs" />
     <Compile Include="PEERS.cs" />
-    <Compile Include="ProbationaryStudent.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

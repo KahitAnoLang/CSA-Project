@@ -9,6 +9,7 @@ namespace CSAStudentMS.Models
     //CARE (Challenging Academically at Risk through Empowerment)
     public class CARE : Student
     {
-        //dsgdsfgh
+        public CARE(int idnum, string status) : base(idnum, status)
+        { }
     }
 }

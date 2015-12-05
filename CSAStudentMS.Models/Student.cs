@@ -8,15 +8,19 @@ namespace CSAStudentMS.Models
 {
     public class Student : User
     {
-        private string name, program;
+        private string name, program, status, category;
         private int yearlevel;
         public Student(int idnum, string name, string program, int yearlevel):base(idnum)
         {
             this.name = name;
             this.program = program;
             this.yearlevel = yearlevel;
-        }     
-
+        }
+        public Student(int idnum, string status) : base(idnum)
+        {
+            this.status = status;
+        }
+        
         public string Name
         {
             get { return name; }
@@ -34,6 +38,14 @@ namespace CSAStudentMS.Models
             get { return yearlevel; }
             set { yearlevel = value; }
         }
+
+        public string Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
+
+    
 
     }
 }
