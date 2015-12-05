@@ -117,6 +117,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="SetAdviserSched.xaml.cs">
       <DependentUpon>SetAdviserSched.xaml</DependentUpon>
     </Compile>
@@ -168,6 +169,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSAStudentMS.Models\CSAStudentMS.Models.csproj">
+      <Project>{dc4dc024-69fd-48b4-9834-7a3dfb5de46d}</Project>
+      <Name>CSAStudentMS.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MD5UnitTest\MD5UnitTest.csproj">
+      <Project>{cb7948c6-2336-4224-9cd3-1ffbebe91b0d}</Project>
+      <Name>MD5UnitTest</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
