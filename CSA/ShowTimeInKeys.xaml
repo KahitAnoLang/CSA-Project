@@ -1,0 +1,24 @@
+﻿<Controls:MetroWindow x:Class="CSA.ShowTimeInKeys"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:CSA"
+        mc:Ignorable="d"
+        Title="Time-in Keys" Icon="icons/icon.png" WindowStartupLocation="CenterScreen" Height="332.989" Width="631.959" ResizeMode="NoResize">
+    <Grid Background="#FF1EBCCF">
+        <ListView Background="#99FFFFFF" Margin="10,64,10,49" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Student Number"/>
+                    <GridViewColumn Header="Name"/>
+                    <GridViewColumn Header="Time-in key"/> 
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Adviser Time-in Keys" FontSize="22" IsEnabled="False" Template="{DynamicResource LabelTitleTemplate}" Margin="10,10,10,255" />
+        <Button Content="Close" Style="{DynamicResource MyButtonStyle}" Foreground="White" Background="#FF9AAFDC" 
+        	Margin="519,260,10,16" BorderBrush="{x:Null}" FontSize="13.333" FontFamily="Yu Gothic UI"/>
+    </Grid>
+</Controls:MetroWindow>

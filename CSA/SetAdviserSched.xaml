@@ -1,0 +1,533 @@
+﻿<Controls:MetroWindow x:Class="CSA.SetAdviserSched"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:CSA"
+        mc:Ignorable="d"
+        Title="Set Adviser Schedule" Height="446.391" Width="690.721" Icon="icons/icon.png" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="#FF1EBCCF">
+
+        <Grid Margin="153,126,448,257" Name="MainGrid">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=CheckB, Path=IsChecked}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox Name="CheckB" Margin="33,10" />
+        </Grid>
+        <Grid Margin="253,126,348,257" x:Name="MainGrid_Copy">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB1" Margin="33,10" />
+        </Grid>
+        <Grid Margin="354,126,247,257" x:Name="MainGrid_Copy1">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB2" Margin="33,10" />
+        </Grid>
+        <Grid Margin="455,126,146,257" x:Name="MainGrid_Copy2">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB3" Margin="33,10" />
+        </Grid>
+        <Grid Margin="554,126,47,257" x:Name="MainGrid_Copy3">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB4" Margin="33,10" />
+        </Grid>
+        <Grid Margin="153,200,448,183" x:Name="MainGrid_Copy4">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB5" Margin="33,10" />
+        </Grid>
+        <Grid Margin="253,200,348,183" x:Name="MainGrid_Copy5">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB6" Margin="33,10" />
+        </Grid>
+        <Grid Margin="354,200,247,183" x:Name="MainGrid_Copy6">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB7" Margin="33,10" />
+        </Grid>
+        <Grid Margin="455,200,146,183" x:Name="MainGrid_Copy7">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB8" Margin="33,10" />
+        </Grid>
+        <Grid Margin="554,200,47,183" x:Name="MainGrid_Copy8">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB9" Margin="33,10" />
+        </Grid>
+        <Grid Margin="153,163,448,220" x:Name="MainGrid_Copy9">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB10" Margin="33,10" />
+        </Grid>
+        <Grid Margin="253,163,348,220" x:Name="MainGrid_Copy10">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB11" Margin="33,10" />
+        </Grid>
+        <Grid Margin="354,163,247,220" x:Name="MainGrid_Copy11">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB12" Margin="33,10" />
+        </Grid>
+        <Grid Margin="455,163,146,220" x:Name="MainGrid_Copy12">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB13" Margin="33,10" />
+        </Grid>
+        <Grid Margin="554,163,47,220" x:Name="MainGrid_Copy13">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB14" Margin="33,10" />
+        </Grid>
+        <Grid Margin="153,238,448,145" x:Name="MainGrid_Copy14">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB15" Margin="33,10" />
+        </Grid>
+        <Grid Margin="253,238,348,145" x:Name="MainGrid_Copy15">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB16" Margin="33,10" />
+        </Grid>
+        <Grid Margin="354,238,247,145" x:Name="MainGrid_Copy16">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB17" Margin="33,10" />
+        </Grid>
+        <Grid Margin="455,238,146,145" x:Name="MainGrid_Copy17">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB18" Margin="33,10" />
+        </Grid>
+        <Grid Margin="554,238,47,145" x:Name="MainGrid_Copy18">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB19" Margin="33,10" />
+        </Grid>
+        <Grid Margin="153,275,448,109" x:Name="MainGrid_Copy19">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB20" Margin="33,10" />
+        </Grid>
+        <Grid Margin="253,275,348,109" x:Name="MainGrid_Copy20">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB21" Margin="33,10" />
+        </Grid>
+        <Grid Margin="354,275,247,109" x:Name="MainGrid_Copy21">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB22" Margin="33,10" />
+        </Grid>
+        <Grid Margin="455,275,146,109" x:Name="MainGrid_Copy22">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB23" Margin="33,10" />
+        </Grid>
+        <Grid Margin="554,275,47,109" x:Name="MainGrid_Copy23">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB24" Margin="33,10" />
+        </Grid>
+        <Grid Margin="153,89,448,294" x:Name="MainGrid_Copy24">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB25" Margin="33,10" />
+        </Grid>
+        <Grid Margin="253,89,348,294" x:Name="MainGrid_Copy25">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB26" Margin="33,10" />
+        </Grid>
+        <Grid Margin="354,89,247,294" x:Name="MainGrid_Copy26">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB27" Margin="33,10" />
+        </Grid>
+        <Grid Margin="455,89,146,294" x:Name="MainGrid_Copy27">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB28" Margin="33,10" />
+        </Grid>
+        <Grid Margin="554,89,47,294" x:Name="MainGrid_Copy28">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB29" Margin="33,10" />
+        </Grid>
+        <Grid Margin="153,311,448,72" x:Name="MainGrid_Copy29">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB30" Margin="33,10" />
+        </Grid>
+        <Grid Margin="253,311,348,72" x:Name="MainGrid_Copy30">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB31" Margin="33,10" />
+        </Grid>
+        <Grid Margin="354,311,247,72" x:Name="MainGrid_Copy31">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB32" Margin="33,10" />
+        </Grid>
+        <Grid Margin="455,311,146,72" x:Name="MainGrid_Copy32">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB33" Margin="33,10" />
+        </Grid>
+        <Grid Margin="554,311,47,72" x:Name="MainGrid_Copy33">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB34" Margin="33,10" />
+        </Grid>
+        <Grid Margin="153,348,448,35" x:Name="MainGrid_Copy34">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB35" Margin="33,10" />
+        </Grid>
+        <Grid Margin="253,348,348,35" x:Name="MainGrid_Copy35">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB36" Margin="33,10" />
+        </Grid>
+        <Grid Margin="354,348,247,35" x:Name="MainGrid_Copy36">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB37" Margin="33,10" />
+        </Grid>
+        <Grid Margin="455,348,146,35" x:Name="MainGrid_Copy37">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB38" Margin="33,10" />
+        </Grid>
+        <Grid Margin="554,348,47,35" x:Name="MainGrid_Copy38">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=CheckB1}" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <CheckBox x:Name="CheckB39" Margin="33,10" />
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>

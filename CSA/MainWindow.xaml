@@ -1,0 +1,867 @@
+﻿<Controls:MetroWindow x:Class="CSA.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:ControlsDialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:CSA"
+        mc:Ignorable="d"
+        Title="Center for Student Advising" Icon="icons/icon.png" WindowStartupLocation="CenterScreen" WindowState="Normal" Loaded="MetroWindow_Loaded" MinWidth="1023" MinHeight="768" Height="768" Width="1023" ResizeMode="CanMinimize" >
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Name="Dtime" Content="Time and date" />
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl >
+            <Controls:Flyout Name="flyoutAdList"  Header="👥  Active Advisers" Position="Right" Width="250" Theme="Accent" IsOpen="True"  >
+                <StackPanel>
+
+                </StackPanel>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+
+    <Grid Name="Main" >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform Angle="-23.962" CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF211D1D" Offset="0.5"/>
+                <GradientStop Color="#FF131010" Offset="0.5"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid MaxHeight="145" MinHeight="145" MinWidth="760" VerticalAlignment="Top">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform Angle="-36.87" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFE23E41" Offset="0.5"/>
+                    <GradientStop Color="#FFE52427" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Image Source="{StaticResource logo}" MaxHeight="125" MaxWidth="100" ClipToBounds="True" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="89" MinHeight="115" Margin="10,10,0,0"/>
+            <Label Content="Center for Student Advising" Margin="105,30,11,0" FontSize="48" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" />
+            <Label Content="Mapúa Institute of Technology" Foreground="White" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Margin="426,86,4,0" FontSize="16"/>
+        </Grid>
+
+        <Rectangle Margin="259,150,10,10" Stroke="Gray" Fill="#FF1AA3B3"/>
+        <Image Source="{StaticResource logo}" Margin="200,175,166,0" Opacity="0.1" VerticalAlignment="Top"/>
+        <Rectangle Stroke="White" Margin="287,159,266,29" OpacityMask="White"/>
+        <Grid Name="button" Style="{DynamicResource ButtonGrid}"
+              HorizontalAlignment="Right" VerticalAlignment="Top"  
+              MouseDown="button_MouseDown" Width="184" MouseUp="button_MouseUp" >
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="0" Opacity="0.3" ShadowDepth="5.5"/>
+            </Grid.Effect>
+            <Label Content="  👥  Active Advisers" Foreground="White" FontFamily="Yu Gothic UI Light" FontSize="20"/>
+        </Grid>
+
+        <StackPanel Name="AnnouncementStack" Background="#FF5CBBC7" MinWidth="225" MinHeight="410" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="770,159,25,168">
+            <StackPanel.Effect>
+                <DropShadowEffect Opacity="0.20" Direction="310" ShadowDepth="12" BlurRadius="0"/>
+            </StackPanel.Effect>
+            <Label Content="ANNOUNCEMENTS" Foreground="White" FontSize="24" Margin="0" Padding="15,5,5,5" MinWidth="236" MinHeight="42" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform Angle="-23.199" CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FF7E7C7C" Offset="0.5"/>
+                        <GradientStop Color="#FF6C6C6C" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+        </StackPanel>
+
+        <Label Name="loginLbl" Content="Login as Administrator" FontSize="16" IsEnabled="False" 
+               Template="{DynamicResource MenuLabel}" Margin="0,574,47,132" HorizontalAlignment="Right" />
+        <Button x:Name="adminLogin" Content="🔑  Login" Margin="0,605,25,109" Foreground="White"  Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" Style="{DynamicResource MyButtonStyle}" MinHeight="0" HorizontalAlignment="Right" Width="225" PreviewMouseUp="adminLogin_PreviewMouseUp">
+        </Button>
+        <Label Name="yurLbl" Content="You're logged in as:" FontSize="16" IsEnabled="False" 
+        	Template="{DynamicResource MenuLabel}" Margin="0,633,47,73" HorizontalAlignment="Right" Width="158" Visibility="Collapsed" />
+        <Button x:Name="adminLogout" Content="🔑  Logout" Margin="0,685,25,29" Foreground="White"  Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" Style="{DynamicResource MyButtonStyle}" MinHeight="0" HorizontalAlignment="Right" Width="225" PreviewMouseUp="adminLogout_PreviewMouseUp" Visibility="Collapsed">
+        </Button>
+        <Label Name="UsernameViewLbl" Content="Username.123" FontSize="16" IsEnabled="False" 
+        	Template="{DynamicResource MenuLabel}" Margin="0,654,25,52" HorizontalAlignment="Right" Width="225" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Collapsed" />
+
+        <StackPanel Margin="10,150,0,10" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" MinWidth="266" MinHeight="334" MaxWidth="700" Background="#00DCA9A9" Width="277" CanVerticallyScroll="True" >
+            <Grid Name="TimeGrid" Margin="0,10,30,0" MouseEnter="Generic_MouseEnter" MouseLeave="Generic_MouseLeave" Style="{DynamicResource MenuGridStyle}" MouseDown="MenuBar_MouseDown" Uid="1">
+                <Grid.RenderTransform>
+                    <TranslateTransform X="30"/>
+                </Grid.RenderTransform>
+                <Label Content="🕓 Time-In / Time-Out" FontSize="24" Margin="0,10" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            </Grid>
+            <Grid Name="SessionGrid" Margin="0,10,30,0" MouseEnter="Generic_MouseEnter" MouseLeave="Generic_MouseLeave" Style="{DynamicResource MenuGridStyle}" MouseDown="MenuBar_MouseDown" Tag="" Uid="0">
+                <Grid.RenderTransform>
+                    <TranslateTransform X="0"/>
+                </Grid.RenderTransform>
+                <Label Content=" 👥 Sessions" FontSize="24" Margin="0,10" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            </Grid>
+            <Grid Name="CareGrid" Margin="0,10,30,0" MouseEnter="Generic_MouseEnter" MouseLeave="Generic_MouseLeave" Style="{DynamicResource MenuGridStyle}" MouseDown="MenuBar_MouseDown" Tag="" Uid="0" Visibility="Collapsed" Opacity="0">
+                <Grid.RenderTransform>
+                    <TranslateTransform X="30"/>
+                </Grid.RenderTransform>
+                <Label Content="📎 CARE" FontSize="24" Margin="0,10" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            </Grid>
+            <Grid Name="AdviserGrid" Margin="0,10,30,0" MouseEnter="Generic_MouseEnter" MouseLeave="Generic_MouseLeave" Style="{DynamicResource MenuGridStyle}" MouseDown="MenuBar_MouseDown" Tag="" Uid="0" Visibility="Collapsed" Opacity="0">
+                <Grid.RenderTransform>
+                    <TranslateTransform X="30"/>
+                </Grid.RenderTransform>
+                <Label Content="📅 Adviser Availability" FontSize="24" Margin="0,10" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            </Grid>
+            <Grid Name="MasterListGrid" Margin="0,10,30,0" MouseEnter="Generic_MouseEnter" MouseLeave="Generic_MouseLeave" Style="{DynamicResource MenuGridStyle}" MouseDown="MenuBar_MouseDown" Tag="" Uid="0" Visibility="Collapsed" Opacity="0">
+                <Grid.RenderTransform>
+                    <TranslateTransform X="30"/>
+                </Grid.RenderTransform>
+                <Label Content="📆 Master List" FontSize="24" Margin="0,10" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            </Grid>
+            <Grid Name="ReportsGrid" Margin="0,10,30,0" MouseEnter="Generic_MouseEnter" MouseLeave="Generic_MouseLeave" Style="{DynamicResource MenuGridStyle}" MouseDown="MenuBar_MouseDown" Tag="" Uid="0" Visibility="Collapsed" Opacity="0">
+                <Grid.RenderTransform>
+                    <TranslateTransform X="30"/>
+                </Grid.RenderTransform>
+                <Label Content="📈 Reports" FontSize="24" Margin="0,10" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            </Grid>
+            <Grid Name="SettingGrid" Margin="0,10,30,0" MouseEnter="Generic_MouseEnter" MouseLeave="Generic_MouseLeave" Style="{DynamicResource MenuGridStyle}" MouseDown="MenuBar_MouseDown" Tag="" Uid="0" IsHitTestVisible="True" Visibility="Collapsed" Opacity="0">
+                <Grid.RenderTransform>
+                    <TranslateTransform X="30"/>
+                </Grid.RenderTransform>
+                <Label Content="🔧 Settings" FontSize="24" Margin="0,10" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            </Grid>
+        </StackPanel>
+
+        <!--Time-in/Time-out feature content-->
+        <Grid Name="TInOutGrid" Style="{DynamicResource ContentGridStyle}" Visibility="Visible">
+            <Label Content=" 🕓 Time-In" Margin="0,0,0,494" IsEnabled="False" Template="{DynamicResource LabelTitleTemplate}"/>
+            <Label Content="Student Number:" IsEnabled="False" Template="{DynamicResource ContentLabel}" Margin="0,63,303,452" HorizontalAlignment="Left" MaxWidth="146" MaxHeight="37"/>
+            <Label Content="Name:" IsEnabled="False" FontSize="16" Template="{DynamicResource MenuLabel}" Margin="0,96,0,427" HorizontalAlignment="Left" MaxWidth="66" MaxHeight="29" Width="55"/>
+            <Label Content="Program:" IsEnabled="False" FontSize="14" Template="{DynamicResource MenuLabel}" Margin="0,130,0,393" MaxWidth="66" MaxHeight="29" HorizontalAlignment="Left"/>
+            <Label Content="Year:" IsEnabled="False" FontSize="14" Template="{DynamicResource MenuLabel}" Margin="154,130,0,393" MaxWidth="40" MaxHeight="29" HorizontalAlignment="Left"/>
+            <Label Name="NameLbl" IsEnabled="False" FontSize="14" Template="{DynamicResource MenuLabel}" Margin="62,96,0,427" MinWidth="274" MinHeight="29" HorizontalAlignment="Left"/>
+            <Label x:Name="ProgLbl" IsEnabled="False" FontSize="14" Template="{DynamicResource MenuLabel}" Margin="62,130,0,393" MinWidth="88" MinHeight="29" HorizontalAlignment="Left"/>
+            <Label x:Name="YearLbl" IsEnabled="False" FontSize="14" Template="{DynamicResource MenuLabel}" Margin="193,130,0,393" MinWidth="50" MinHeight="29" HorizontalAlignment="Left"/>
+            <Grid Name="Pic" Margin="336,69,-5,363" Opacity="0.1" MinWidth="120" MinHeight="120" MaxWidth="190" MaxHeight="190">
+                <Grid.Background>
+                    <ImageBrush ImageSource="icons/pic.jpg" Stretch="UniformToFill"/>
+                </Grid.Background>
+            </Grid>
+            <TextBox Name="StdNumTimeIn" Controls:TextBoxHelper.Watermark="Student Number" Margin="144,69,126,458"
+                     Controls:TextBoxHelper.ClearTextButton="True"  
+                     SelectionBrush="#FF7E25FF" FontSize="13.333" MaxWidth="200" MinWidth="181" HorizontalAlignment="Left"/>
+            <Button Name="TimeInBtn" Content="Time-in" Margin="10,170,0,363" Foreground="White"  
+                    Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                    Style="{DynamicResource MyButtonStyle}" 
+                    FontSize="13.333" Padding="0" MinHeight="19" MinWidth="105" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Left" PreviewMouseUp="TimeInBtn_PreviewMouseUp">
+            </Button>
+            <Label Content=" 🕓 Time-Out" Margin="0,230,0,264" IsEnabled="False" Template="{DynamicResource LabelTitleTemplate}"/>
+            <Label Content="Student Number:" IsEnabled="False" Template="{DynamicResource ContentLabel}" Margin="0,305,303,210" HorizontalAlignment="Left" MaxWidth="146" MaxHeight="37"/>
+            <TextBox Name="StdNumTimeOut" Controls:TextBoxHelper.Watermark="Student Number" Margin="144,311,126,215"
+            	Controls:TextBoxHelper.ClearTextButton="True"  
+            	SelectionBrush="#FF7E25FF" FontSize="13.333" MinWidth="181" MaxWidth="200" HorizontalAlignment="Left"/>
+            <ListView Name="AdvListTimeOut" Margin="5,347,10,82" Background="#99FFFFFF">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Student No." Width="100"/>
+                        <GridViewColumn Header="Program" Width="80"/>
+                        <GridViewColumn Header="Year" Width="50"/>
+                        <GridViewColumn Header="Name" Width="195"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="TimeOutBtn" Content="Time-out" Margin="336,475,10,58" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="13.333" Padding="0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" PreviewMouseUp="TimeOutBtn_PreviewMouseUp">
+            </Button>
+        </Grid>
+        <!--Sessions feature content-->
+        <Grid Name="SessionsGrid" Style="{DynamicResource ContentGridStyle}" Visibility="Collapsed">
+            <Label Content=" 👥  Sessions" Margin="0,0,0,494" IsEnabled="False" Template="{DynamicResource LabelTitleTemplate}"/>
+            <Grid Name="CreateSessionBtn" Margin="42,70,311,388"  Background="#FF0B99AA" Style="{DynamicResource GridTileEffect}" MouseDown="Sessions_MouseDown" MouseUp="Sessions_MouseUp" MaxWidth="105"  >
+                <Label Content="👥" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,66,30" Width="32" />
+                <Label Content="Create" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,20,0,40" Width="74" />
+                <Label Content="Session" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,42,0,18" Width="74" />
+                <Grid.Effect>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="0" Opacity="0.3" />
+                </Grid.Effect>
+            </Grid>
+            <Grid Name="ViewSessionBtn" Margin="174,70,179,388" Style="{DynamicResource GridTileEffect}" MouseDown="Sessions_MouseDown" MouseUp="Sessions_MouseUp" MaxWidth="105">
+                <Grid.Effect>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="0" Opacity="0.3" />
+                </Grid.Effect>
+                <Label Content="👥" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,66,30" Width="32" />
+                <Label Content="View" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,20,0,40" Width="74" />
+                <Label Content="Session" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,42,0,18" Width="74" />
+            </Grid>
+            <Grid Name="SchedSessionBtn" Margin="302,70,51,388" Style="{DynamicResource GridTileEffect}" MouseDown="Sessions_MouseDown" MouseUp="Sessions_MouseUp" MaxWidth="105">
+                <Grid.Effect>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="0" Opacity="0.3" />
+                </Grid.Effect>
+                <Label Content="👥" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,66,30" Width="32" />
+                <Label Content="Schedule" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="17,20,0,40" Width="81" />
+                <Label Content="Session" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24,42,0,18" Width="74" />
+            </Grid>
+
+            <Grid Name="CreateSessionGrid" Margin="10,181,10,26" Visibility="Visible">
+                <Grid.DataContext>
+                    <local:StudentListModel/>
+                </Grid.DataContext>
+
+                <Rectangle Stroke="White"/>
+                <Label Content="Create Session" FontSize="17" Background="#66515253" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="5,5,5,307"/>
+                <Label Content="Choose Adviser/s :" FontSize="13" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="5,56,310,263" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" FontWeight="Bold"/>
+                <Label Content="➡" FontSize="18" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="203,121,200,191" HorizontalAlignment="Center" VerticalAlignment="Center" Height="33" FontWeight="Bold" Width="28"/>
+                <ListView Name="AdvListSession" Background="#99FFFFFF" Margin="10,82,227,161" HorizontalAlignment="Left" MaxWidth="370" ItemsSource="{Binding StudentList}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Student No." Width="85" DisplayMemberBinding="{Binding StudentNo}"/>
+                            <GridViewColumn Header="Name" Width="280" DisplayMemberBinding="{Binding Name}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="AddAviserBtn" Content="➕ Add Adviser" Foreground="White"  
+            	        Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	        Style="{DynamicResource MyButtonStyle}" 
+            	        FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" MinWidth="105" HorizontalContentAlignment="Center" Margin="86,194,225,131"/>
+                <Label Content="Add Advisee/s :" FontSize="13" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="0,212,332,107" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" RenderTransformOrigin="0.101,0.538" FontWeight="Bold"/>
+                <Label Content="Focus Subject:" FontSize="13" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="7,37,330,282" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" FontWeight="Bold"/>
+                <ComboBox Name="FocusSubjectComb" Margin="104,41,0,284" MinWidth="181" MaxWidth="200" HorizontalAlignment="Left" MinHeight="0" FontSize="10.667" Style="{DynamicResource ComboBoxStyle1}">
+                    <ComboBoxItem Content="English"/>
+                    <ComboBoxItem Content="Alghebra"/>
+                    <ComboBoxItem Content="Trigonometry"/>
+                    <ComboBoxItem Content="Programming"/>
+                    <ComboBoxItem Content="Sex Education"/>
+                </ComboBox>
+                <ListView x:Name="AddedAdvListSession" Background="#99FFFFFF" Margin="233,82,10,161" HorizontalAlignment="Right" MaxWidth="370">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Student No." Width="85"/>
+                            <GridViewColumn Header="Name" Width="280"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="RemoveAviserBtn" Content="➖ Remove Adviser" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,194,10,131" Width="113">
+                </Button>
+                <Label Content="Student Number:" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="0,236,327,83" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="104"/>
+                <TextBox Name="StdNumSession" Controls:TextBoxHelper.Watermark="Student Number" Margin="104,238,0,86" 
+                	Controls:TextBoxHelper.ClearTextButton="True"  
+                	SelectionBrush="#FF7E25FF" MaxWidth="200" MinHeight="0" FontSize="10.667" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MinWidth="120" HorizontalAlignment="Left"/>
+                <ListView x:Name="StudListSession" Background="#99FFFFFF" Margin="239,236,10,35" MinWidth="188">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Student No." Width="85"/>
+                            <GridViewColumn Header="Name" Width="190"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="RemoveStudSessionBtn" Content="➖ Remove Advisee" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,315,10,10" Width="113">
+                </Button>
+                <Label Content="Name:" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="0,254,385,65" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="46"/>
+                <Label Name="StudNameSession" Content="" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="38,254,197,65" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="196"/>
+                <Label Content="Program:" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="0,273,372,46" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="59"/>
+                <Label Name="ProgNameSession" Content="" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="51,273,314,46" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="66"/>
+                <Label Content="Year:" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="122,273,272,46" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="37"/>
+                <Label Name="YearSession" Content="" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="158,273,207,46" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="66"/>
+                <Button Name="AddStudSessionBtn" Content="➕ Add Advisee" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Left" MinWidth="105" HorizontalContentAlignment="Center" Margin="119,315,0,10">
+                </Button>
+                <Button Name="CreateSesBtn" Content="✔ Create Session" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,42,10,283" Width="113">
+                </Button>
+            </Grid>
+            <Grid Name="ViewSessionGrid" Margin="10,181,10,26" Visibility="Collapsed">
+                <Rectangle Stroke="White"/>
+                <Label Content="View Session" FontSize="17" Background="#66515253" IsEnabled="False" Template="{DynamicResource ContentLabel}" Margin="5,5,5,307"/>
+                <Label Content="Active Sessions" IsEnabled="False" FontSize="16" Template="{DynamicResource MenuLabel}" Margin="10,32,277,285"/>
+                <ListView Name="SessionsList" Background="#99FFFFFF" Margin="10,65,10,188">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Session ID" Width="85"/>
+                            <GridViewColumn Header="Session Name" Width="320"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="EndSessionBtn" Content="End Session" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,162,10,163" Width="113">
+                </Button>
+                <Label Content="Scheduled Sessions" IsEnabled="False" FontSize="16" Template="{DynamicResource MenuLabel}" Margin="10,176,268,141"/>
+                <ListView Name="SchedSessionsList" Background="#99FFFFFF" Margin="10,209,10,35">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Session ID" Width="85"/>
+                            <GridViewColumn Header="Session Name" Width="320"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="StartSchedSession" Content="Start Session" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,315,10,10" Width="113">
+                </Button>
+                <Button Name="DeleteSessionBtn" Content="Delete Session" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,162,135,163" Width="113">
+                </Button>
+                <Button x:Name="DeleteSchedSession" Content="Delete Session" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,315,135,10" Width="113">
+                </Button>
+            </Grid>
+            <Grid Name="SchedSessionGrid" Margin="10,181,10,26" Visibility="Collapsed">
+                <Grid.DataContext>
+                    <local:StudentListModel/>
+                </Grid.DataContext>
+                <Rectangle Stroke="White"/>
+                <Label Content="Schedule Session" FontSize="17" Background="#66515253" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="5,5,5,307"/>
+                <Label Content="Choose Adviser/s :" FontSize="13" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="5,91,308,227" HorizontalAlignment="Left" VerticalAlignment="Center" Height="27" FontWeight="Bold" Width="118"/>
+                <ListView Name="AdvListSessionSched" Background="#99FFFFFF" Margin="10,117,228,161" ItemsSource="{Binding StudentList}" MaxWidth="370" HorizontalAlignment="Left">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Student No." Width="85" DisplayMemberBinding="{Binding StudentNo}"/>
+                            <GridViewColumn Header="Name" Width="270" DisplayMemberBinding="{Binding Name}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="SchedAddAviserBtn" Content="➕ Add Adviser" Foreground="White"  
+            	        Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	        Style="{DynamicResource MyButtonStyle}" 
+            	        FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19"
+                        HorizontalAlignment="Center" MinWidth="105" HorizontalContentAlignment="Center" Margin="98,194,228,131">
+                </Button>
+                <Label Content="Add Advisee/s :" FontSize="13" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="0,212,332,107" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" RenderTransformOrigin="0.101,0.538" FontWeight="Bold"/>
+                <Label Content="Focus Subject:" FontSize="13" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="7,37,330,282" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" FontWeight="Bold"/>
+                <ComboBox Name="FocusSubjectCombSched" Margin="104,41,0,284" MinWidth="181" MaxWidth="200" HorizontalAlignment="Left" MinHeight="0" FontSize="10.667" Style="{DynamicResource ComboBoxStyle1}">
+                    <ComboBoxItem Content="English"/>
+                    <ComboBoxItem Content="Alghebra"/>
+                    <ComboBoxItem Content="Trigonometry"/>
+                    <ComboBoxItem Content="Programming"/>
+                    <ComboBoxItem Content="Sex Education"/>
+                </ComboBox>
+                <ListView x:Name="AddedAdvListSessionSched" Background="#99FFFFFF" Margin="233,117,10,161" HorizontalAlignment="Right" MaxWidth="370">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Student No." Width="85"/>
+                            <GridViewColumn Header="Name" Width="270"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="SchedRemoveAviserBtn" Content="➖ Remove Adviser" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,194,10,131" Width="113">
+                </Button>
+                <Label Content="Student Number:" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="0,236,327,83" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="104"/>
+                <TextBox Controls:TextBoxHelper.Watermark="Student Number" Margin="104,238,0,86" 
+                	Controls:TextBoxHelper.ClearTextButton="True"  
+                	SelectionBrush="#FF7E25FF" MaxWidth="200" HorizontalAlignment="Left" MinHeight="0" FontSize="10.667" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Width="130"/>
+                <ListView x:Name="StudListSessionSched" Background="#99FFFFFF" Margin="239,236,10,35">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Student No." Width="85"/>
+                            <GridViewColumn Header="Name" Width="190"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="SchedRemoveStudBtn" Content="➖ Remove Advisee" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,315,10,10" Width="113">
+                </Button>
+                <Label Content="Name:" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="0,254,385,65" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="46"/>
+                <Label Content="" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="38,254,197,65" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="196"/>
+                <Label Content="Program:" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="0,273,372,46" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="59"/>
+                <Label Content="" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="51,273,314,46" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="66"/>
+                <Label Content="Year:" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="122,273,272,46" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="37"/>
+                <Label Content="" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="158,273,207,46" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="66"/>
+                <Button Name="AddStudSessionBtnSched" Content="➕ Add Advisee" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Left" MinWidth="105" HorizontalContentAlignment="Center" Margin="129,315,0,10">
+                </Button>
+                <Button x:Name="CreateSchedSesBtn" Content="✔ Create Session" Foreground="White"  
+                	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                	Style="{DynamicResource MyButtonStyle}" 
+                	FontSize="10.667" Padding="0,2,0,0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" Margin="0,42,10,283" Width="111">
+                </Button>
+                <Label Content="Choose Date/Time:" FontSize="13" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="0,66,309,253" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" FontWeight="Bold" Width="122"/>
+                <DatePicker Name="DateSessionSched" Margin="123,72,176,253" MinHeight="0" FontSize="10.667" SelectedDateFormat="Short" MinWidth="132" MaxWidth="160" HorizontalAlignment="Left" />
+                <Label Content="/" FontSize="15" Padding="2,3,0,0" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="261,67,161,252" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" FontWeight="Bold" Width="9"/>
+                <ComboBox Name="hrsTimeSchedSession" Margin="274,72,0,253" FontSize="10.667" UseLayoutRounding="True" Style="{DynamicResource ComboBoxStyle1}" MaxWidth="40" MinWidth="31" HorizontalAlignment="Left" >
+                    <ComboBoxItem Content="01"/>
+                    <ComboBoxItem Content="02"/>
+                    <ComboBoxItem Content="03"/>
+                    <ComboBoxItem Content="04"/>
+                    <ComboBoxItem Content="05"/>
+                    <ComboBoxItem Content="06"/>
+                    <ComboBoxItem Content="07"/>
+                    <ComboBoxItem Content="08"/>
+                    <ComboBoxItem Content="09"/>
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem Content="11"/>
+                    <ComboBoxItem Content="12"/>
+                </ComboBox>
+                <ComboBox Name="minsTimeSchedSession" Margin="325,72,75,253" FontSize="10.667" UseLayoutRounding="True" Style="{DynamicResource ComboBoxStyle1}" MaxWidth="40" MinWidth="31" HorizontalAlignment="Left" >
+                    <ComboBoxItem Content="00"/>
+                    <ComboBoxItem Content="30"/>
+                </ComboBox>
+                <Label Content=":" FontSize="15" Padding="2,3,0,0" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="313,68,109,251" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" FontWeight="Bold" Width="9"/>
+                <ComboBox Name="AmPmTimeSchedSession" Margin="367,72,26,253" FontSize="10.667" UseLayoutRounding="True" Style="{DynamicResource ComboBoxStyle1}" MaxWidth="45" MinWidth="38" HorizontalAlignment="Left" >
+                    <ComboBoxItem Content="AM"/>
+                    <ComboBoxItem Content="PM"/>
+                </ComboBox>
+                <Label Content="➡" FontSize="20" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="203,140,198,178" HorizontalAlignment="Center" VerticalAlignment="Center" Height="27" FontWeight="Bold" Padding="5,0,5,5"/>
+                <Label Content="(HH)        :    (MM)       (AM/PM)" FontSize="9" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="270,85,10,233" HorizontalAlignment="Left" VerticalAlignment="Center" Height="27" FontWeight="Bold" Width="151"/>
+            </Grid>
+        </Grid>
+        <!--EWP feature content-->
+        <Grid Name="CareMainGrid" Style="{DynamicResource ContentGridStyle}" Visibility="Collapsed">
+            <Label Content=" 📎 CARE" Margin="0,0,0,490" Background="#66515253" IsEnabled="False" FontSize="30" Template="{DynamicResource MenuLabel}"/>
+            <Label Content="(Challenging Academically at Risk through Empowerment)" FontSize="12" Margin="68,34,59,489" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            <Label Content="ASPIRE" FontSize="22" Margin="0,68,367,444" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            <Label Content="(Achieving Satisfactory Performance through Intervention and Referral to EWP)" FontSize="12" Margin="10,92,0,431" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            <ListView Background="#99FFFFFF" Margin="10,117,10,301">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Student No." Width="85"/>
+                        <GridViewColumn Header="Name" Width="90"/>
+                        <GridViewColumn Header="Program" Width="70"/>
+                        <GridViewColumn Header="Year" Width="50"/>
+                        <GridViewColumn Header="Standing" Width="70"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Name="AddStudAspire" Content="➕ Add Student" Margin="10,256,0,276" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="0,3,0,0" HorizontalContentAlignment="Center" MinHeight="0" HorizontalAlignment="Left" Width="110"/>
+            <Button x:Name="RemoveStudAspire" Content="❌ Remove Student " Margin="309,256,10,276" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="2,3,0,0" HorizontalContentAlignment="Center" MaxWidth="185" MinHeight="0" Width="132" HorizontalAlignment="Right">
+            </Button>
+            <Button x:Name="EditStatAspire" Content="Edit Student Status" Margin="0,256,154,276" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="0,3,0,0" HorizontalContentAlignment="Center" MaxWidth="185" MinHeight="0" Width="132" HorizontalAlignment="Right">
+            </Button>
+            <ListView x:Name="MainAdviserList_Copy2" Background="#99FFFFFF" Margin="10,350,10,68">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Student No." Width="85"/>
+                        <GridViewColumn Header="Name" Width="90"/>
+                        <GridViewColumn Header="Program" Width="70"/>
+                        <GridViewColumn Header="Year" Width="50"/>
+                        <GridViewColumn Header="Standing" Width="70"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="AddStudEwp" Content="➕ Add Student" Margin="10,489,331,43" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="0,3,0,0" HorizontalContentAlignment="Center" MinHeight="0" Width="110" HorizontalAlignment="Left"/>
+            <Button x:Name="RemoveStudEwp" Content="❌ Remove Student " Margin="309,489,10,43" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="2,3,0,0" HorizontalContentAlignment="Center" MaxWidth="185" MinHeight="0" Width="132" HorizontalAlignment="Right">
+            </Button>
+            <Button x:Name="EditStatEwp" Content="Edit Student Status" Margin="0,489,154,43" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="0,3,0,0" HorizontalContentAlignment="Center" MaxWidth="185" MinHeight="0" Width="132" HorizontalAlignment="Right">
+            </Button>
+            <Label Content="EWP" FontSize="22" Margin="0,298,367,214" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            <Label Content="(Early Warning Program)" FontSize="12" Margin="10,324,0,199" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+        </Grid>
+        <!--Adviser availability feature content-->
+        <Grid Name="AvailabilityGrid" Style="{DynamicResource ContentGridStyle}" Visibility="Collapsed">
+            <Label Content=" 📅 Adviser Availability" Margin="0,0,0,490" IsEnabled="False" Template="{DynamicResource LabelTitleTemplate}"/>
+            <Label Content="Advisers' Weekly Schedule" Margin="0,85,221,427" IsEnabled="False" Template="{DynamicResource ContentLabel}" MaxWidth="230"/>
+            <Grid Margin="10,130,10,132">
+                <Grid Margin="91,0,276,266" Background="#FF9AAFDC" MinWidth="64" MaxWidth="64">
+                    <Label Content="M" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="16" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="160,0,207,266" Background="#FF9AAFDC" MinWidth="64" MaxWidth="64">
+                    <Label Content="T" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="16" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="229,0,138,266" Background="#FF9AAFDC" MinWidth="64" MaxWidth="64">
+                    <Label Content="W" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="16" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="298,0,69,266" Background="#FF9AAFDC" MinWidth="64" MaxWidth="64">
+                    <Label Content="TH" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="16" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="367,0,0,266" Background="#FF9AAFDC" MinWidth="64" MaxWidth="64">
+                    <Label Content="F" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="16" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="0,29,346,234" Background="#FF9AAFDC" MinWidth="85" MaxWidth="85">
+                    <Label Content="7:30AM-9:00AM" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="10" Padding="6" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="0,62,346,201" Background="#FF9AAFDC" MinWidth="85" MaxWidth="85">
+                    <Label Content="9:00AM-10:30AM" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="10" Padding="3,6,3,3" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="0,95,346,167" Background="#FF9AAFDC" MinWidth="85" MaxWidth="85">
+                    <Label Content="10:30AM-12:00PM" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="10" Padding="0,6,0,3" HorizontalContentAlignment="Center" Margin="0,0,0,1"/>
+                </Grid>
+                <Grid Margin="0,128,346,134" Background="#FF9AAFDC" MinWidth="85" MaxWidth="85">
+                    <Label Content="12:00PM-1:30PM" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="10" Padding="0,6,0,3" HorizontalContentAlignment="Center" Margin="0,0,0,1"/>
+                </Grid>
+                <Grid Margin="0,161,346,101" Background="#FF9AAFDC" MinWidth="85" MaxWidth="85">
+                    <Label Content="1:30PM-3:00PM" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="10" Padding="0,6,0,3" HorizontalContentAlignment="Center" Margin="0,0,0,1"/>
+                </Grid>
+                <Grid Margin="0,194,346,68" Background="#FF9AAFDC" MinWidth="85" MaxWidth="85">
+                    <Label Content="3:00PM-4:30PM" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="10" Padding="0,6,0,3" HorizontalContentAlignment="Center" Margin="0,0,0,1"/>
+                </Grid>
+                <Grid Margin="0,228,346,35" Background="#FF9AAFDC" MinWidth="85" MaxWidth="85">
+                    <Label Content="4:30PM-6:00PM" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="10" Padding="0,6,0,3" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="0,261,346,2" Background="#FF9AAFDC" MinWidth="85" MaxWidth="85">
+                    <Label Content="6:00PM-7:30PM" IsEnabled="False" Template="{DynamicResource MenuLabel}" FontWeight="Bold" FontSize="10" Padding="0,6,0,3" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="91,29,276,234" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="160,29,207,234" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="229,29,138,234" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="298,29,69,234" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="367,29,0,234" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="91,62,276,201" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="160,62,207,201" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="229,62,138,201" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="298,62,69,201" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="367,62,0,201" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="91,95,276,168" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="160,95,207,168" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="229,95,138,168" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="298,95,69,168" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="367,95,0,168" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="91,128,276,135" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="160,128,207,135" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="229,128,138,135" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="298,128,69,135" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="367,128,0,135" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="91,161,276,102" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="160,161,207,102" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="229,161,138,102" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="298,161,69,102" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="367,161,0,102" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="91,194,276,69" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="160,194,207,69" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="229,194,138,69" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="298,194,69,69" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="367,194,0,69" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="91,228,276,35" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="160,228,207,35" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="229,228,138,35" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="298,228,69,35" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="367,228,0,35" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="91,261,276,2" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="160,261,207,2" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="229,261,138,2" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="298,261,69,2" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Grid Margin="367,261,0,2" Style="{DynamicResource SchedStyle}" MinWidth="64" MaxWidth="64">
+                    <Label Content="👤" IsEnabled="False" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Button x:Name="VeiwSched" Content="View Available Advisers" Margin="256,435,10,94" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="13.333" Padding="0,3,0,0" MinHeight="19" MinWidth="105" HorizontalContentAlignment="Center" Width="185" MaxWidth="185">
+            </Button>
+            <Button x:Name="SetSched" Content="Set Adviser Schedule" Margin="0,435,256,94" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="13.333" Padding="0,3,0,0" MinHeight="19" MinWidth="105" HorizontalContentAlignment="Center" Width="185" MaxWidth="185" PreviewMouseUp="SetSched_PreviewMouseUp">
+            </Button>
+        </Grid>
+        <!--Master list feature content-->
+        <Grid Name="MLGrid" Style="{DynamicResource ContentGridStyle}" Visibility="Collapsed">
+            <Label Content=" 📆 Master List" Margin="0,0,0,490" IsEnabled="False" Template="{DynamicResource LabelTitleTemplate}"/>
+            <Label Content="List of Advisers" Margin="10,59,307,461" IsEnabled="False" Template="{DynamicResource ContentLabel}"/>
+            <ListView x:Name="MainAdviserList" Background="#99FFFFFF" Margin="10,91,10,352">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Student No." Width="85"/>
+                        <GridViewColumn Header="Program" Width="70"/>
+                        <GridViewColumn Header="Year" Width="50"/>
+                        <GridViewColumn Header="Name" Width="100"/>
+                        <GridViewColumn Header="Salary" Width="70"/>
+                        <GridViewColumn Header="Status" Width="60"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="MainAddAdvBtn" Content="➕ Add Adviser " Margin="10,205,341,327" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="0,3,0,0" HorizontalContentAlignment="Center" MaxWidth="190" MinWidth="100" MinHeight="0" HorizontalAlignment="Left">
+            </Button>
+            <Button x:Name="MainDeacAdvBtn" Content="❌ DeActivate Adviser " Margin="309,205,10,327" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="2,3,0,0" HorizontalContentAlignment="Center" MaxWidth="190" MinWidth="100" MinHeight="0" HorizontalAlignment="Right">
+            </Button>
+            <Button x:Name="MainActAdvBtn" Content="✔ Activate Adviser " Margin="0,205,154,327" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="0,3,0,0" HorizontalContentAlignment="Center" MaxWidth="190" MinWidth="100" MinHeight="0" HorizontalAlignment="Right" Width="126">
+            </Button>
+            <Label Content="List of Students under CARE" Margin="10,225,200,295" IsEnabled="False" Template="{DynamicResource ContentLabel}"/>
+            <ListView x:Name="MainCareList" Background="#99FFFFFF" Margin="10,257,10,186">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Category" Width="70"/>
+                        <GridViewColumn Header="Student No." Width="85"/>
+                        <GridViewColumn Header="Name" Width="90"/>
+                        <GridViewColumn Header="Program" Width="70"/>
+                        <GridViewColumn Header="Year" Width="50"/>
+                        <GridViewColumn Header="Standing" Width="70"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="MainCareAddStudBtn" Content="➕ Add Student" Margin="10,371,341,161" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="0,3,0,0" HorizontalContentAlignment="Center" MaxWidth="190" MinWidth="100" MinHeight="0" HorizontalAlignment="Left">
+            </Button>
+            <Button x:Name="MainCareRemStudBtn_Copy3" Content="❌ Remove Student " Margin="0,371,10,161" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="2,3,0,0" HorizontalContentAlignment="Center" MaxWidth="190" MinWidth="100" MinHeight="0" HorizontalAlignment="Right" Width="132">
+            </Button>
+            <Button x:Name="MainCareEditStatBtn" Content="Edit Student Status" Margin="0,371,154,161" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="0,3,0,0" HorizontalContentAlignment="Center" MaxWidth="190" MinWidth="120" MinHeight="0" HorizontalAlignment="Right" Width="126">
+            </Button>
+            <Label Content="Administrator Account" Margin="10,414,241,106" IsEnabled="False" Template="{DynamicResource ContentLabel}"/>
+            <Button x:Name="MainAddAdminBtn" Content="➕ Add Admin Account" Margin="50,463,237,69" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="0,3,0,0" HorizontalContentAlignment="Center" MaxWidth="185" MinHeight="0">
+            </Button>
+            <Button x:Name="MainRemoveAccBtn" Content="❌ Remove Own Account" Margin="252,463,37,69" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" 
+            	FontSize="11" Padding="2,3,0,0" HorizontalContentAlignment="Center" MaxWidth="185" MinHeight="0">
+            </Button>
+        </Grid>
+        <!--Reports feature content-->
+        <Grid Name="RepGrid" Style="{DynamicResource ContentGridStyle}" Visibility="Collapsed">
+            <Label Content=" 📈 Reports" Margin="0,0,0,490" IsEnabled="False" Template="{DynamicResource LabelTitleTemplate}"/>
+            <Label Content="Generate Reports" Margin="0,269,0,245" Background="#66515253" IsEnabled="False" Template="{DynamicResource ContentLabel}"/>
+            <Button Name="topadviserByRate" Content="Top Advisers" Foreground="White"  
+                    Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                    Style="{DynamicResource MyButtonStyle}" Margin="0,76,348,451" MaxWidth="110"/>
+            <Button Name="topAdviseesByCourse" Content="Most Advisees" Foreground="White"  
+                    Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                    Style="{DynamicResource MyButtonStyle}" Margin="115,76,233,451" MaxWidth="110"/>
+            <Button Name="topSubjectByCount" Content="Top Subjects" Foreground="White"  
+                    Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                    Style="{DynamicResource MyButtonStyle}" Margin="231,76,117,451" MaxWidth="110"/>
+            <Button x:Name="topDaysByCount" Content="Peek Days" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" Margin="348,76,0,451" MaxWidth="110"/>
+            <!--Charts Here-->
+            <Grid Name="AttendanceRep" Margin="10,331,343,127" Style="{DynamicResource GridTileEffect}" MaxWidth="105" HorizontalAlignment="Center" >
+                <Label Content="📛" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="34,3,32,57" Width="32" />
+                <Label Content="Attendance" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,25,0,35" Width="98" Padding="5,5,0,5" />
+                <Label Content="Reports" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14,47,10,13" Width="74" />
+                <Grid.Effect>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="0" Opacity="0.3" />
+                </Grid.Effect>
+            </Grid>
+            <Grid x:Name="SalaryRep" Margin="120,331,233,127" Style="{DynamicResource GridTileEffect}" MaxWidth="105" HorizontalAlignment="Center" >
+                <Grid.Effect>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="0" Opacity="0.3" />
+                </Grid.Effect>
+                <Label Content="📛" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="34,3,32,57" Width="32" />
+                <Label Content="Salary" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,25,0,35" Width="98" Padding="5,5,0,5" HorizontalContentAlignment="Center" />
+                <Label Content="Reports" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14,47,10,13" Width="74" />
+            </Grid>
+            <Grid x:Name="SessionsRep" Margin="231,331,122,127" Style="{DynamicResource GridTileEffect}" MaxWidth="105" HorizontalAlignment="Center" >
+                <Grid.Effect>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="0" Opacity="0.3" />
+                </Grid.Effect>
+                <Label Content="📛" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="34,3,32,57" Width="32" />
+                <Label Content="Sessions" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,25,0,35" Width="98" Padding="5,5,0,5" HorizontalContentAlignment="Center" />
+                <Label Content="Reports" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14,47,10,13" Width="74" />
+            </Grid>
+            <Grid x:Name="GenRep" Margin="343,331,10,127" Style="{DynamicResource GridTileEffect}" MaxWidth="105" HorizontalAlignment="Center"  >
+                <Grid.Effect>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="0" Opacity="0.3" />
+                </Grid.Effect>
+                <Label Content="📛" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="34,3,32,57" Width="32" />
+                <Label Content="General" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,25,0,35" Width="98" Padding="5,5,0,5" HorizontalContentAlignment="Center" />
+                <Label Content="Reports" IsEnabled="False" Template="{DynamicResource ContentLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14,47,10,13" Width="74" />
+            </Grid>
+            <RadioButton Content="Daily" Margin="26,441,338,78" Style="{DynamicResource RadioButton}" MaxWidth="95"/>
+            <RadioButton Content="Weekly" Margin="131,441,233,78" Style="{DynamicResource RadioButton}" MaxWidth="95"/>
+            <RadioButton Content="Monthly"  Margin="241,441,123,78" Style="{DynamicResource RadioButton}" MaxWidth="95"/>
+            <RadioButton Content="Quarterly" Margin="348,441,10,78" Style="{DynamicResource RadioButton}" MaxWidth="95"/>
+            <Button x:Name="GenerateRepBtn" Content="Generate Report" Margin="317,488,10,41" Foreground="White"  
+                    Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                    Style="{DynamicResource MyButtonStyle}" MinHeight="0" Width="124" />
+        </Grid>
+        <!--Content for Settings-->
+        <Grid Name="SetGrid" Style="{DynamicResource ContentGridStyle}" Visibility="Collapsed">
+            <Label Content=" 🔧 Settings" Margin="0,0,0,490" IsEnabled="False" Template="{DynamicResource LabelTitleTemplate}"/>
+            <Label Content=" 📣 Manage Announcements" Margin="0,254,0,252" FontSize="24" Background="#66515253" IsEnabled="False" Template="{DynamicResource MenuLabel}"/>
+            <Label Content="Edit Account Settings" FontSize="22" IsEnabled="False" Template="{DynamicResource MenuLabel}"  Margin="0,59,229,452" HorizontalAlignment="Left"/>
+            <Label Content="Username:" FontSize="18" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="21,102,336,416" VerticalAlignment="Center" MaxWidth="96" />
+            <Label Content="Password:" FontSize="18" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="26,144,329,374" VerticalAlignment="Center" MaxWidth="96" />
+            <TextBox Name="EditUserNameTb" Controls:TextBoxHelper.Watermark="Username" IsEnabled="False" Margin="140,105,111,418"
+                     FontSize="16" SelectionBrush="#FF7E25FF" Controls:TextBoxHelper.ClearTextButton="True" VerticalAlignment="Center" MinWidth="200" MaxWidth="240" />
+            <Button Name="EditUserBtn" Content="✏" Margin="366,105,55,419" Foreground="White"  
+                    Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+                    Style="{DynamicResource MyButtonStyle}" MinWidth="30" MaxHeight="30" 
+                    MaxWidth="35" FontSize="21.333" Padding="0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+            </Button>
+            <TextBox Name="EditPassTb" Controls:TextBoxHelper.Watermark="Password" IsEnabled="False" Margin="140,147,111,376"
+            	FontSize="16" SelectionBrush="#FF7E25FF" Controls:TextBoxHelper.ClearTextButton="True" VerticalAlignment="Center" MinWidth="200" MaxWidth="240" />
+            <Button x:Name="EditPassBtn" Content="✏" Margin="366,147,55,377" Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" MinWidth="30" MaxHeight="30" 
+            	MaxWidth="35" FontSize="21.333" Padding="0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+            </Button>
+            <Button x:Name="SaveBtn" Content="Save"  Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" MinWidth="30" 
+            	 FontSize="14" Margin="268,198,67,325" VerticalAlignment="Center" Height="29" MaxWidth="147" >
+            </Button>
+            <Button x:Name="ShowPassBtn" Content="Show time-in keys"  Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" MinWidth="30"
+            	FontSize="12" Margin="10,198,0,325" VerticalAlignment="Center" Height="29" MaxWidth="200" HorizontalAlignment="Left" Padding="2,6,2,0" Width="127" >
+            </Button>
+            <Label Content="Create Announcement" FontSize="18" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="10,300,0,218" VerticalAlignment="Center" MaxWidth="190" HorizontalAlignment="Left" />
+            <TextBox Name="AnnounceTitleTb" Controls:TextBoxHelper.Watermark="Title" Margin="10,342,0,184"
+            	FontSize="16" SelectionBrush="#FF7E25FF" Controls:TextBoxHelper.ClearTextButton="True" VerticalAlignment="Center" MinWidth="200" Height="23" VerticalContentAlignment="Center" />
+            <TextBox Name="AnnounceContentTb" Controls:TextBoxHelper.Watermark="Content" Margin="10,373,0,62"
+            	FontSize="16" SelectionBrush="#FF7E25FF" VerticalAlignment="Center" MinWidth="200" Height="117" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" />
+            <Button x:Name="PublishBtn" Content="Publish"  Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" MinWidth="30" 
+            	FontSize="12" Margin="0,501,134,31" VerticalAlignment="Center" MaxWidth="146" MinHeight="20" Height="20" Padding="0,2,0,0" HorizontalAlignment="Right" Width="110" >
+            </Button>
+            <Button x:Name="CancelBtn" Content="Cancel"  Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" MinWidth="30" 
+            	FontSize="12" Margin="0,501,10,31" VerticalAlignment="Center" MaxWidth="146" MinHeight="20" Height="20" Padding="0,2,0,0" HorizontalAlignment="Right" Width="110" >
+            </Button>
+            <Button x:Name="VeiwAnnouncementBtn" Content="View announcements"  Foreground="White"  
+            	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
+            	Style="{DynamicResource MyButtonStyle}" MinWidth="30" 
+            	FontSize="12" Margin="10,501,0,31" VerticalAlignment="Center" MaxWidth="190" MinHeight="20" Height="20" Padding="0,2,0,0" HorizontalAlignment="Left" Width="160" >
+            </Button>
+        </Grid>
+
+    </Grid>
+</Controls:MetroWindow>
