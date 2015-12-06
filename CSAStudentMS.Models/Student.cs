@@ -20,7 +20,8 @@ namespace CSAStudentMS.Models
         {
             this.status = status;
         }
-        
+        public Student(string idnum) : base(idnum)
+        { }
         public string Name
         {
             get { return name; }

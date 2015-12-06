@@ -167,11 +167,11 @@
             </Grid>
             <TextBox Name="StdNumTimeIn" Controls:TextBoxHelper.Watermark="Student Number" Margin="144,69,126,458"
                      Controls:TextBoxHelper.ClearTextButton="True"  
-                     SelectionBrush="#FF7E25FF" FontSize="13.333" MaxWidth="200" MinWidth="181" HorizontalAlignment="Left"/>
+                     SelectionBrush="#FF7E25FF" FontSize="13.333" MaxWidth="200" MinWidth="181" HorizontalAlignment="Left" TextChanged="StdNumTimeIn_TextChanged"/>
             <Button Name="TimeInBtn" Content="Time-in" Margin="10,170,0,363" Foreground="White"  
                     Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
                     Style="{DynamicResource MyButtonStyle}" 
-                    FontSize="13.333" Padding="0" MinHeight="19" MinWidth="105" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Left" PreviewMouseUp="TimeInBtn_PreviewMouseUp">
+                    FontSize="13.333" Padding="0" MinHeight="19" MinWidth="105" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Left" PreviewMouseUp="TimeInBtn_PreviewMouseUp" Click="TimeInBtn_Click">
             </Button>
             <Label Content=" 🕓 Time-Out" Margin="0,230,0,264" IsEnabled="False" Template="{DynamicResource LabelTitleTemplate}"/>
             <Label Content="Student Number:" IsEnabled="False" Template="{DynamicResource ContentLabel}" Margin="0,305,303,210" HorizontalAlignment="Left" MaxWidth="146" MaxHeight="37"/>
@@ -181,10 +181,10 @@
             <ListView Name="AdvListTimeOut" Margin="5,347,10,82" Background="#99FFFFFF">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Student No." Width="100"/>
-                        <GridViewColumn Header="Program" Width="80"/>
-                        <GridViewColumn Header="Year" Width="50"/>
-                        <GridViewColumn Header="Name" Width="195"/>
+                        <GridViewColumn Header="Student No." Width="100" DisplayMemberBinding="{Binding StudNo}"/>
+                        <GridViewColumn Header="Name" Width="195" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Program" Width="80" DisplayMemberBinding="{Binding Program}"/>
+                        <GridViewColumn Header="Year" Width="50" DisplayMemberBinding="{Binding Year}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

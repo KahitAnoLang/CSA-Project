@@ -15,6 +15,10 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using System.Windows.Threading;
 using MahApps.Metro.Controls.Dialogs;
+using CSAStudentMS.Models;
+using System.Data;
+using System.Data.SqlClient;
+
 
 namespace CSA
 {
@@ -43,8 +47,7 @@ namespace CSA
 
 
         private void button_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
+        { 
             Animation.DropShadowOpacity(button, 0.0, TimeSpan.FromMilliseconds(0));
         }
         private void button_MouseUp(object sender, MouseButtonEventArgs e)
@@ -227,7 +230,7 @@ namespace CSA
         private void TimeInBtn_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             TimeInKey tk = new TimeInKey();
-            tk.ShowDialog();
+           // tk.ShowDialog();
         }
 
         private void TimeOutBtn_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -244,6 +247,41 @@ namespace CSA
         {
             SetAdviserSched s = new SetAdviserSched();
             s.ShowDialog();
+        }
+
+        private void StdNumTimeIn_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateCredentials(StdNumTimeIn.Text);
+        }
+
+        private void UpdateCredentials(string idno)
+        {
+            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
+            SqlCommand command = new SqlCommand("SELECT Name, Program, Year from Students where Studno = '" + idno+"'", conn);
+            
+                
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            DataTable dt = ds.Tables[0];
+            foreach (DataRow dr in ds.Tables[0].Rows) 
+            {
+                NameLbl.Content = Convert.ToString(dr[0]);
+                ProgLbl.Content = Convert.ToString(dr[1]);
+                YearLbl.Content = Convert.ToString(dr[2]);
+            }          
+        }
+        
+        private void TimeInBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //AdvListTimeOut
+            Student s = new Student(StdNumTimeIn.Text);
+            Attendance a = new Attendance(DateTime.Now);
+            AttendanceDB ADB = new AttendanceDB(s, a);
+
+            ADB.AddEntry();
+
         }
     }
 }
