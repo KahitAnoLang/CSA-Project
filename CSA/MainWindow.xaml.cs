@@ -66,6 +66,7 @@ namespace CSA
             Animation.TranslateX(s, 0.0, TimeSpan.FromMilliseconds(50));
         }
 
+
         private static Point p = new Point(30, 0);
         private void MenuBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -208,8 +209,17 @@ namespace CSA
                 yurLbl.Visibility = Visibility.Collapsed;
                 UsernameViewLbl.Visibility = Visibility.Collapsed;
                 adminLogout.Visibility = Visibility.Collapsed;
+                SessionsGrid.Visibility = Visibility.Collapsed;
+                CareMainGrid.Visibility = Visibility.Collapsed;
+                AvailabilityGrid.Visibility = Visibility.Collapsed;
+                MLGrid.Visibility = Visibility.Collapsed;
+                RepGrid.Visibility = Visibility.Collapsed;
+                SetGrid.Visibility = Visibility.Collapsed;
+                TInOutGrid.Visibility = Visibility.Visible;
                 loginLbl.Visibility = Visibility.Visible;
                 adminLogin.Visibility = Visibility.Visible;
+                Animation.TranslateX(TimeGrid, 30.0, TimeSpan.FromMilliseconds(0));
+                Animation.TranslateX(SessionGrid, 0.0, TimeSpan.FromMilliseconds(0));
             }
 
         }
