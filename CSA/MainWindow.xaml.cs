@@ -27,6 +27,8 @@ namespace CSA
     /// </summary>
     public partial class MainWindow
     {
+        private List<StudentListViewItem> students = new List<StudentListViewItem>();
+        private bool IsPeer = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -251,7 +253,27 @@ namespace CSA
 
         private void StdNumTimeIn_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateCredentials(StdNumTimeIn.Text);
+            if (IsPeerAdviser(StdNumTimeIn.Text) == true)
+            {
+                UpdateCredentials(StdNumTimeIn.Text);
+            }
+            
+        }
+
+        private bool IsPeerAdviser(string idno)
+        {
+            int ctr = 0;
+            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
+            SqlCommand command = new SqlCommand("SELECT * from PeerAdviser where Studno = '" + idno + "'", conn);
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);          
+            DataTable dt = ds.Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                IsPeer = true;
+            }
+                return IsPeer;
         }
 
         private void UpdateCredentials(string idno)
@@ -279,8 +301,33 @@ namespace CSA
             Student s = new Student(StdNumTimeIn.Text);
             Attendance a = new Attendance(DateTime.Now);
             AttendanceDB ADB = new AttendanceDB(s, a);
-
             ADB.AddEntry();
+            students.Clear();
+            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
+            SqlCommand command = new SqlCommand("SELECT Studno, Name, Program, Year from Students where Studno = '" + s.IdNum + "'", conn);
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            DataTable dt = ds.Tables[0];
+            foreach (DataRow dr in dt.Rows)
+            {
+                students.Add(new StudentListViewItem()
+                {
+                    StudNo = Convert.ToString(dr["StudNo"]),
+                    Name = Convert.ToString(dr["Name"]),
+                    Year = Convert.ToInt32(dr["Year"]),
+                    Program = Convert.ToString(dr["Program"])
+                });               
+            }
+            AdvListTimeOut.ItemsSource = students;
+        }
+
+        private void TimeOutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Student s = new Student(StdNumTimeIn.Text);
+            Attendance a = new Attendance(DateTime.Now);
+            AttendanceDB ADB = new AttendanceDB(s, a);
+            ADB.EditEntry();
 
         }
     }

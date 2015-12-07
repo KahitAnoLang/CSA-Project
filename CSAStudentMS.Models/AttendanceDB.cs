@@ -32,7 +32,13 @@ namespace CSAStudentMS.Models
         //Time-out log
         public void EditEntry()
         {
-            throw new NotImplementedException();
+            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
+            SqlCommand command = new SqlCommand("INSERT INTO AttendanceLog (ATimeOut) VALUES (@STUDNO, @TIMEOUT)", conn);
+            command.Parameters.Add("@TIMEIN", SqlDbType.DateTime);
+            command.Parameters["@TIMEIN"].Value = a.TimeStamp.ToShortTimeString();
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
         }
 
         public void DeleteEntry()

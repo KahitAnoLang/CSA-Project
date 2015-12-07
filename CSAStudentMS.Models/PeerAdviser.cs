@@ -12,6 +12,7 @@ namespace CSAStudentMS.Models
         public PeerAdviser(string idnum, string name, string program, int yearlevel) 
             : base(idnum,name, program, yearlevel)  
         { }
+        public PeerAdviser(string idnum):base(idnum) { }
 
         public int RenderedHours
         {

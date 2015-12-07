@@ -191,7 +191,7 @@
             <Button x:Name="TimeOutBtn" Content="Time-out" Margin="336,475,10,58" Foreground="White"  
             	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
             	Style="{DynamicResource MyButtonStyle}" 
-            	FontSize="13.333" Padding="0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" PreviewMouseUp="TimeOutBtn_PreviewMouseUp">
+            	FontSize="13.333" Padding="0" MinHeight="19" MaxWidth="115" MaxHeight="19" HorizontalAlignment="Right" MinWidth="105" HorizontalContentAlignment="Center" PreviewMouseUp="TimeOutBtn_PreviewMouseUp" Click="TimeOutBtn_Click">
             </Button>
         </Grid>
         <!--Sessions feature content-->
