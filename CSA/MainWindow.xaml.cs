@@ -253,7 +253,7 @@ namespace CSA
 
         private void StdNumTimeIn_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (IsPeerAdviser(StdNumTimeIn.Text) == true)
+            if (IsPeerAdviser(StdNumTimeIn.Text))
             {
                 UpdateCredentials(StdNumTimeIn.Text);
             }
@@ -262,7 +262,6 @@ namespace CSA
 
         private bool IsPeerAdviser(string idno)
         {
-            int ctr = 0;
             SqlConnection conn = new SqlConnection(Settings.ConnectionString);
             SqlCommand command = new SqlCommand("SELECT * from PeerAdviser where Studno = '" + idno + "'", conn);
             SqlDataAdapter da = new SqlDataAdapter(command);
@@ -273,6 +272,8 @@ namespace CSA
             {
                 IsPeer = true;
             }
+            else
+                IsPeer = false;
                 return IsPeer;
         }
 

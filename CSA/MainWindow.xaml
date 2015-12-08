@@ -17,7 +17,7 @@
     <Controls:MetroWindow.Flyouts>
         <Controls:FlyoutsControl >
             <Controls:Flyout Name="flyoutAdList"  Header="👥  Active Advisers" Position="Right" Width="250" Theme="Accent" IsOpen="True"  >
-                <StackPanel>
+                <StackPanel x:Name="flyoutStack">
 
                 </StackPanel>
             </Controls:Flyout>
