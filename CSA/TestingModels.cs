@@ -10,7 +10,7 @@ namespace CSA
     {
         public string Username { get; set; }
     }
-
+        
     public class StudentListModel
     {
         public StudentModel[] StudentList

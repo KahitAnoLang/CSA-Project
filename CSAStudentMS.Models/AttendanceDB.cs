@@ -20,7 +20,7 @@ namespace CSAStudentMS.Models
         public void AddEntry()
         {
             SqlConnection conn = new SqlConnection(Settings.ConnectionString);
-            SqlCommand command = new SqlCommand("INSERT INTO AttendanceLog (Studno, ATimeIn) VALUES (@STUDNO, @TIMEIN)", conn);
+            SqlCommand command = new SqlCommand("INSERT INTO Attendance (Studno, ATimeIn) VALUES (@STUDNO, @TIMEIN)", conn);
             command.Parameters.Add("@STUDNO", SqlDbType.VarChar);
             command.Parameters["@STUDNO"].Value = s.IdNum;
             command.Parameters.Add("@TIMEIN", SqlDbType.DateTime);
@@ -33,9 +33,9 @@ namespace CSAStudentMS.Models
         public void EditEntry()
         {
             SqlConnection conn = new SqlConnection(Settings.ConnectionString);
-            SqlCommand command = new SqlCommand("INSERT INTO AttendanceLog (ATimeOut) VALUES (@STUDNO, @TIMEOUT)", conn);
-            command.Parameters.Add("@TIMEIN", SqlDbType.DateTime);
-            command.Parameters["@TIMEIN"].Value = a.TimeStamp.ToShortTimeString();
+            SqlCommand command = new SqlCommand("UPDATE Attendance SET ATimeOut = @TIMEOUT where Studno = '"+s.IdNum+"'", conn);
+            command.Parameters.Add("@TIMEOUT", SqlDbType.DateTime);
+            command.Parameters["@TIMEOUT"].Value = a.TimeStamp.ToShortTimeString();
             SqlDataAdapter da = new SqlDataAdapter(command);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -43,7 +43,27 @@ namespace CSAStudentMS.Models
 
         public void DeleteEntry()
         {
-            throw new NotImplementedException();
+            AddToLogs();
+            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
+            SqlCommand command = new SqlCommand("DELETE FROM Attendance where Studno = '" + s.IdNum + "'", conn);
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+        }
+
+        public void AddToLogs()
+        {
+            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
+            SqlCommand command = new SqlCommand("INSERT INTO AttendanceLog VALUES (@STUDNO, @TIMEIN, @TIMEOUT)", conn);
+            command.Parameters.Add("@STUDNO", SqlDbType.VarChar);
+            command.Parameters["@STUDNO"].Value = s.IdNum;
+            command.Parameters.Add("@TIMEIN", SqlDbType.DateTime);
+            command.Parameters["@TIMEIN"].Value = a.TimeStamp.ToShortTimeString();
+            command.Parameters.Add("@TIMEOUT", SqlDbType.DateTime);
+            command.Parameters["@TIMEOUT"].Value = a.TimeStamp.ToShortTimeString();
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
         }
     }
 }

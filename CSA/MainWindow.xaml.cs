@@ -163,9 +163,8 @@ namespace CSA
         {
             //AdminLogin al = new AdminLogin();
             //al.ShowDialog();
-          
-            LoginDialogData s= await this.ShowLoginAsync("Admin Login", "Enter Username and Password \t\t\t(ESC to cancel)");
             
+            LoginDialogData s= await this.ShowLoginAsync("Admin Login", "Enter Username and Password \t\t\t(ESC to cancel)");
             CareGrid.Visibility = Visibility.Visible;
             AdviserGrid.Visibility = Visibility.Visible;
             MasterListGrid.Visibility = Visibility.Visible;
@@ -238,12 +237,33 @@ namespace CSA
         private void TimeOutBtn_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             //test first if there is a selected item in listview before doing this
-            MessageBoxResult res = MessageBox.Show("Timing out?", "Time-out", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(res==MessageBoxResult.Yes)
-            {
-                //do shit here
-            }
+         //   if (IsInListView(StdNumTimeOut.Text))
+           // {
+                MessageBoxResult res = MessageBox.Show("Timing out?", "Time-out", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (res == MessageBoxResult.Yes)
+                {
+                    Student s = new Student(StdNumTimeOut.Text);
+                    Attendance a = new Attendance(DateTime.Now);
+                    AttendanceDB ADB = new AttendanceDB(s, a);
+                    ADB.EditEntry();
+                }
+            //}
+            
         }
+
+        /*private bool IsInListView(string text)
+        {
+            bool IsIn = false;
+          
+                for (int i = 0; i < AdvListTimeOut.Items.Count; i++)
+                {
+                    if (AdvListTimeOut.Items == text)
+                    {
+                    IsIn = true;
+                    }
+                }
+            return IsIn;
+        }*/
 
         private void SetSched_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -315,21 +335,50 @@ namespace CSA
                 students.Add(new StudentListViewItem()
                 {
                     StudNo = Convert.ToString(dr["StudNo"]),
-                    Name = Convert.ToString(dr["Name"]),
-                    Year = Convert.ToInt32(dr["Year"]),
-                    Program = Convert.ToString(dr["Program"])
+                    Name = s.Name = Convert.ToString(dr["Name"]),
+                    Year = s.YearLevel = Convert.ToInt32(dr["Year"]),
+                    Program = s.Program = Convert.ToString(dr["Program"])
                 });               
             }
+            string x = s.Name;
+            AddToActiveAdvisers(s.Name);
             AdvListTimeOut.ItemsSource = students;
         }
 
         private void TimeOutBtn_Click(object sender, RoutedEventArgs e)
         {
-            Student s = new Student(StdNumTimeIn.Text);
-            Attendance a = new Attendance(DateTime.Now);
-            AttendanceDB ADB = new AttendanceDB(s, a);
-            ADB.EditEntry();
+            
 
         }
+
+        public void AddToActiveAdvisers(string aname)
+        {
+            WrapPanel panel = (WrapPanel)FindName("PeerAdviserStack");
+            Grid grid = new Grid();
+            grid.Height = 30;
+            grid.Width = 230;
+            grid.Margin = new Thickness(1);
+            grid.Background = new SolidColorBrush(Colors.SkyBlue);
+
+            TextBlock name = new TextBlock();
+            name.Text = aname;
+            name.FontSize = 14;
+            name.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            name.TextAlignment = TextAlignment.Center;
+            name.Margin = new Thickness(5, 64, 5, 47);
+
+            ToggleSwitch toggle = new ToggleSwitch();
+            toggle.Margin = new Thickness(0, 110, 25, 0);
+            toggle.OffSwitchBrush = new SolidColorBrush(Color.FromRgb(17, 158, 218));
+            toggle.OnSwitchBrush = new SolidColorBrush(Color.FromRgb(160, 222, 72));
+            toggle.Foreground = new SolidColorBrush(Colors.Transparent);
+            toggle.HorizontalAlignment = HorizontalAlignment.Center;
+            ScaleTransform size = new ScaleTransform(1, 0.5);
+            toggle.RenderTransform = size;
+
+            grid.Children.Add(name);
+            panel.Children.Insert(0, grid);
+        }
+       
     }
 }
