@@ -183,7 +183,7 @@
             <ListView Name="AdvListTimeOut" Margin="5,347,10,82" Background="#99FFFFFF">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn x:Name="gvcolStudno" Header="Student No." Width="100" DisplayMemberBinding="{Binding StudNo}"/>
+                        <GridViewColumn Header="Student No." Width="100" DisplayMemberBinding="{Binding StudNo}"/>
                         <GridViewColumn Header="Name" Width="195" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="Program" Width="80" DisplayMemberBinding="{Binding Program}"/>
                         <GridViewColumn Header="Year" Width="50" DisplayMemberBinding="{Binding Year}"/>

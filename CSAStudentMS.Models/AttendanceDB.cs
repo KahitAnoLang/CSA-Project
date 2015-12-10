@@ -28,7 +28,7 @@ namespace CSAStudentMS.Models
             SqlDataAdapter da = new SqlDataAdapter(command);
             DataSet ds = new DataSet();
             da.Fill(ds);
-            AddToLogs();
+            //AddToLogs();
         }
         //Time-out log
         public void EditEntry()
