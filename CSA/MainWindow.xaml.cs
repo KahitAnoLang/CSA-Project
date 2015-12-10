@@ -32,8 +32,8 @@ namespace CSA
         public MainWindow()
         {
             InitializeComponent();
+            
         }
-
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             DispatcherTimer dispatch = new DispatcherTimer();
@@ -75,8 +75,8 @@ namespace CSA
         private static Point p = new Point(30, 0);
         private void MenuBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            FrameworkElement s = sender as FrameworkElement;
-            s.RenderTransform.Transform(p);
+            FrameworkElement g = sender as FrameworkElement;
+            g.RenderTransform.Transform(p);
             TimeGrid.Uid = "0";
             SessionGrid.Uid = "0";
             CareGrid.Uid = "0";
@@ -91,8 +91,8 @@ namespace CSA
             Animation.TranslateX(MasterListGrid, 0.0, TimeSpan.FromMilliseconds(100));
             Animation.TranslateX(ReportsGrid, 0.0, TimeSpan.FromMilliseconds(100));
             Animation.TranslateX(SettingGrid, 0.0, TimeSpan.FromMilliseconds(100));
-            s.Uid="1";
-            Animation.TranslateX(s, 30.0, TimeSpan.FromMilliseconds(0));
+            g.Uid="1";
+            Animation.TranslateX(g, 30.0, TimeSpan.FromMilliseconds(0));
             TInOutGrid.Visibility = Visibility.Collapsed;
             SessionsGrid.Visibility = Visibility.Collapsed;
             CareMainGrid.Visibility = Visibility.Collapsed;
@@ -100,7 +100,7 @@ namespace CSA
             MLGrid.Visibility = Visibility.Collapsed;
             RepGrid.Visibility = Visibility.Collapsed;
             SetGrid.Visibility = Visibility.Collapsed;
-            switch (s.Name)
+            switch (g.Name)
             {
                 case "TimeGrid":
                     TInOutGrid.Visibility = Visibility.Visible;
@@ -121,7 +121,14 @@ namespace CSA
                     RepGrid.Visibility = Visibility.Visible;
                     break;
                 case "SettingGrid":
-                    SetGrid.Visibility = Visibility.Visible;
+                    SettingsPass p = new SettingsPass(this);
+                    p.ShowDialog();
+                    if (p.DialogResult.Value==true)
+                    {
+                        SetGrid.Visibility = Visibility.Visible;
+                        EditUserNameTb.Text = s.Username;
+                        EditPassTb.Text = s.Password.ToString();
+                    }
                     break;
             }
             
@@ -159,12 +166,15 @@ namespace CSA
             }
         }
 
+        public LoginDialogData s;
+
         private async void adminLogin_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             //AdminLogin al = new AdminLogin();
             //al.ShowDialog();
             
-            LoginDialogData s= await this.ShowLoginAsync("Admin Login", "Enter Username and Password \t\t\t(ESC to cancel)");
+            s= await this.ShowLoginAsync("Admin Login", "Enter Username and Password \t\t\t(ESC to cancel)");
+
             CareGrid.Visibility = Visibility.Visible;
             AdviserGrid.Visibility = Visibility.Visible;
             MasterListGrid.Visibility = Visibility.Visible;
@@ -230,7 +240,7 @@ namespace CSA
 
         private void TimeInBtn_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            TimeInKey tk = new TimeInKey();
+            //TimeInKey tk = new TimeInKey();
            // tk.ShowDialog();
         }
 
@@ -379,6 +389,33 @@ namespace CSA
             grid.Children.Add(name);
             panel.Children.Insert(0, grid);
         }
-       
+
+        private void EditUser_Click(object sender, RoutedEventArgs e)
+        {
+            FrameworkElement w = sender as FrameworkElement;
+            switch (w.Name)
+            {
+                case "EditUserBtn":
+                    EditUserNameTb.IsEnabled = true;
+                    break;
+                case "EditPassBtn":
+                    EditPassTb.IsEnabled = true;
+                    break;
+                case "CancelEditBtn":
+                    EditUserNameTb.Text = s.Username;
+                    EditPassTb.Text = s.Password.ToString();
+                    EditPassTb.IsEnabled = false;
+                    EditUserNameTb.IsEnabled = false;
+                    break;
+                case "CancelBtn":
+                    AnnounceTitleTb.Clear();
+                    AnnounceContentTb.Clear();
+                    break;
+                case "VeiwAnnouncementBtn":
+                    Announcements ann = new Announcements();
+                    ann.ShowDialog();
+                    break;
+            }
+        }
     }
 }

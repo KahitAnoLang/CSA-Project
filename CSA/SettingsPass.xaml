@@ -1,0 +1,16 @@
+﻿<Controls:MetroWindow x:Class="CSA.SettingsPass"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:CSA"
+        mc:Ignorable="d"
+        Title="Time-in key" Icon="icons/icon.png" WindowStartupLocation="CenterScreen" Height="178.801" Width="412.858" ResizeMode="NoResize">
+    <Grid Background="#FF1EBCCF">
+        <Label Content="Password" IsEnabled="False" Template="{DynamicResource ContentLabel}" Margin="39,17,30,100"/>
+        <PasswordBox Name="passbox" Controls:TextBoxHelper.ClearTextButton="True" Margin="39,50,30,63" VerticalContentAlignment="Center" FontSize="16" KeyDown="SetPassBtn_KeyDown"/>
+        <Button Name="SetPassBtn" Content="Ok" Foreground="White" FontSize="12" Background="#FF9AAFDC" 
+                Style="{DynamicResource MyButtonStyle}" Margin="293,100,30,0" Height="22" VerticalAlignment="Top" BorderBrush="{x:Null}" Click="SetPassBtn_Click" />
+    </Grid>
+</Controls:MetroWindow>

@@ -88,7 +88,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TimeInKey.xaml">
+    <Page Include="SettingsPass.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,8 +125,8 @@
       <DependentUpon>ShowTimeInKeys.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestingModels.cs" />
-    <Compile Include="TimeInKey.xaml.cs">
-      <DependentUpon>TimeInKey.xaml</DependentUpon>
+    <Compile Include="SettingsPass.xaml.cs">
+      <DependentUpon>SettingsPass.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
