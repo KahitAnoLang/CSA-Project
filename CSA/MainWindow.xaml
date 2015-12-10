@@ -7,24 +7,22 @@
         xmlns:ControlsDialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CSA"
         mc:Ignorable="d"
-        Title="Center for Student Advising" Icon="icons/icon.png" WindowStartupLocation="CenterScreen" WindowState="Normal" Loaded="MetroWindow_Loaded" MinWidth="1023" MinHeight="768" Height="768" Width="1023" ResizeMode="CanMinimize" >
+        Title="Center for Student Advising" Icon="icons/icon.png" WindowStartupLocation="CenterScreen" WindowState="Normal" Loaded="MetroWindow_Loaded" MinWidth="1023" MinHeight="768" Height="768" Width="1023" ResizeMode="CanMinimize" Closing="MetroWindow_Closing">
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Button Name="Dtime" Content="Time and date" />
         </Controls:WindowCommands>
-    </Controls:MetroWindow.RightWindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>    
     <Controls:MetroWindow.Flyouts>
         <Controls:FlyoutsControl >
             <Controls:Flyout Name="flyoutAdList"  Header="👥  Active Advisers" Position="Right" Width="250" Theme="Accent" IsOpen="True"  >
-                <StackPanel x:Name="flyoutStack">
-                    <ScrollViewer Margin="10" VerticalScrollBarVisibility="Auto">
-                        <WrapPanel x:Name="PeerAdviserStack" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                            <!--Add Children here-->
-                        </WrapPanel>
-                    </ScrollViewer>
-                </StackPanel>
-            </Controls:Flyout>
+                <ScrollViewer Margin="10" VerticalScrollBarVisibility="Auto">
+                    <WrapPanel x:Name="PeerAdviserStack" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <!--Add Children here-->
+                    </WrapPanel>
+                </ScrollViewer>
+            </Controls:Flyout>  
         </Controls:FlyoutsControl>
     </Controls:MetroWindow.Flyouts>
 
@@ -185,7 +183,7 @@
             <ListView Name="AdvListTimeOut" Margin="5,347,10,82" Background="#99FFFFFF">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn x:Name="gvcolStudno" Header="Student No." Width="100" DisplayMemberBinding="{Binding StudNo}"/>
+                        <GridViewColumn Header="Student No." Width="100" DisplayMemberBinding="{Binding StudNo}"/>
                         <GridViewColumn Header="Name" Width="195" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="Program" Width="80" DisplayMemberBinding="{Binding Program}"/>
                         <GridViewColumn Header="Year" Width="50" DisplayMemberBinding="{Binding Year}"/>
@@ -259,7 +257,7 @@
                 <ListView x:Name="AddedAdvListSession" Background="#99FFFFFF" Margin="233,82,10,161" HorizontalAlignment="Right" MaxWidth="370">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Student No." Width="85"/>
+                            <GridViewColumn Header="Student No." Width="85"/>   
                             <GridViewColumn Header="Name" Width="280"/>
                         </GridView>
                     </ListView.View>

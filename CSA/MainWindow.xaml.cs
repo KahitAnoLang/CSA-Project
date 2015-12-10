@@ -18,7 +18,7 @@ using MahApps.Metro.Controls.Dialogs;
 using CSAStudentMS.Models;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Collections.ObjectModel;
 
 namespace CSA
 {
@@ -27,12 +27,12 @@ namespace CSA
     /// </summary>
     public partial class MainWindow
     {
-        private List<StudentListViewItem> students = new List<StudentListViewItem>();
-        private bool IsPeer = false;
+        private ObservableCollection<StudentListViewItem> students = new ObservableCollection<StudentListViewItem>();
+        private bool IsPeer = false, IsIn = false;
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -40,6 +40,7 @@ namespace CSA
             dispatch.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatch.Tick += dispatch_Tick;
             dispatch.Start();
+            RefreshActiveAdvisers();    
         }
 
         private void dispatch_Tick(object sender, EventArgs e)
@@ -125,7 +126,7 @@ namespace CSA
                     p.ShowDialog();
                     if (p.DialogResult.Value==true)
                     {
-                        SetGrid.Visibility = Visibility.Visible;
+                    SetGrid.Visibility = Visibility.Visible;
                         EditUserNameTb.Text = s.Username;
                         EditPassTb.Text = s.Password.ToString();
                     }
@@ -242,13 +243,13 @@ namespace CSA
         {
             //TimeInKey tk = new TimeInKey();
            // tk.ShowDialog();
+            
         }
 
         private void TimeOutBtn_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             //test first if there is a selected item in listview before doing this
-         //   if (IsInListView(StdNumTimeOut.Text))
-           // {
+       
                 MessageBoxResult res = MessageBox.Show("Timing out?", "Time-out", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (res == MessageBoxResult.Yes)
                 {
@@ -256,25 +257,9 @@ namespace CSA
                     Attendance a = new Attendance(DateTime.Now);
                     AttendanceDB ADB = new AttendanceDB(s, a);
                     ADB.EditEntry();
+                    ADB.DeleteEntry();
                 }
-            //}
-            
         }
-
-        /*private bool IsInListView(string text)
-        {
-            bool IsIn = false;
-          
-                for (int i = 0; i < AdvListTimeOut.Items.Count; i++)
-                {
-                    if (AdvListTimeOut.Items == text)
-                    {
-                    IsIn = true;
-                    }
-                }
-            return IsIn;
-        }*/
-
         private void SetSched_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             SetAdviserSched s = new SetAdviserSched();
@@ -290,69 +275,80 @@ namespace CSA
             
         }
 
-        private bool IsPeerAdviser(string idno)
+        async private void TimeInBtn_Click(object sender, RoutedEventArgs e)
         {
+            Student s = new Student(StdNumTimeIn.Text);
+            Attendance a = new Attendance(DateTime.Now);
+            AttendanceDB ADB = new AttendanceDB(s, a);
+            if (IsPeerAdviser(s.IdNum) == true)
+            {
+                if (IsTimedIn(s.IdNum) == false)
+                {
+                    ADB.AddEntry();
+                    ADB.AddToLogs();
             SqlConnection conn = new SqlConnection(Settings.ConnectionString);
-            SqlCommand command = new SqlCommand("SELECT * from PeerAdviser where Studno = '" + idno + "'", conn);
+                    SqlCommand command = new SqlCommand("SELECT Studno, Name, Program, Year from Students where Studno ='" + s.IdNum + "'", conn);
             SqlDataAdapter da = new SqlDataAdapter(command);
             DataSet ds = new DataSet();
             da.Fill(ds);          
             DataTable dt = ds.Tables[0];
-            if (dt.Rows.Count > 0)
+                    foreach (DataRow dr in dt.Rows)
             {
-                IsPeer = true;
+                        AddToActiveAdvisers(Convert.ToString(dr["Name"]));
+                        students.Add(new StudentListViewItem()
+                        {
+                            StudNo = Convert.ToString(dr["StudNo"]),
+                            Name = Convert.ToString(dr["Name"]),
+                            Year = Convert.ToInt32(dr["Year"]),
+                            Program = Convert.ToString(dr["Program"])
+                        });
+            }
+
+                    AdvListTimeOut.ItemsSource = students;
+                }
+                else if (IsTimedIn(s.IdNum) == false)
+        {
+                    await this.ShowMessageAsync("Time In Error", "Adviser is already logged in!");
+                }
             }
             else
-                IsPeer = false;
-                return IsPeer;
-        }
-
-        private void UpdateCredentials(string idno)
-        {
-            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
-            SqlCommand command = new SqlCommand("SELECT Name, Program, Year from Students where Studno = '" + idno+"'", conn);
-            
-                
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-            DataTable dt = ds.Tables[0];
-            foreach (DataRow dr in ds.Tables[0].Rows) 
             {
-                NameLbl.Content = Convert.ToString(dr[0]);
-                ProgLbl.Content = Convert.ToString(dr[1]);
-                YearLbl.Content = Convert.ToString(dr[2]);
+                await this.ShowMessageAsync("Time In Error", "Invalid ID number!");
             }          
         }
-        
-        private void TimeInBtn_Click(object sender, RoutedEventArgs e)
+        public void RefreshActiveAdvisers()
         {
-            //AdvListTimeOut
-            Student s = new Student(StdNumTimeIn.Text);
-            Attendance a = new Attendance(DateTime.Now);
-            AttendanceDB ADB = new AttendanceDB(s, a);
-            ADB.AddEntry();
-            students.Clear();
             SqlConnection conn = new SqlConnection(Settings.ConnectionString);
-            SqlCommand command = new SqlCommand("SELECT Studno, Name, Program, Year from Students where Studno = '" + s.IdNum + "'", conn);
+            SqlCommand command = new SqlCommand("SELECT Studno, Name, Program, Year from Students", conn);
             SqlDataAdapter da = new SqlDataAdapter(command);
             DataSet ds = new DataSet();
             da.Fill(ds);
             DataTable dt = ds.Tables[0];
             foreach (DataRow dr in dt.Rows)
             {
+                if (IsPeerAdviser(Convert.ToString(dr["StudNo"])))
+                {
+                    if (IsTimedIn(Convert.ToString(dr["StudNo"])))
+                    {
+                        AddToActiveAdvisers(Convert.ToString(dr["Name"]));
                 students.Add(new StudentListViewItem()
                 {
                     StudNo = Convert.ToString(dr["StudNo"]),
-                    Name = s.Name = Convert.ToString(dr["Name"]),
-                    Year = s.YearLevel = Convert.ToInt32(dr["Year"]),
-                    Program = s.Program = Convert.ToString(dr["Program"])
+                            Name = Convert.ToString(dr["Name"]),
+                            Year = Convert.ToInt32(dr["Year"]),
+                            Program = Convert.ToString(dr["Program"])
                 });               
             }
-            string x = s.Name;
-            AddToActiveAdvisers(s.Name);
+                }
+            }
             AdvListTimeOut.ItemsSource = students;
+        }
+
+        private void ClearActiveAdvisers()
+        {
+            
+            WrapPanel panel = (WrapPanel)FindName("PeerAdviserStack");
+            panel.Children.Clear();
         }
 
         private void TimeOutBtn_Click(object sender, RoutedEventArgs e)
@@ -368,14 +364,15 @@ namespace CSA
             grid.Height = 30;
             grid.Width = 230;
             grid.Margin = new Thickness(1);
-            grid.Background = new SolidColorBrush(Colors.SkyBlue);
+            grid.Background = new SolidColorBrush(Colors.Transparent);
 
             TextBlock name = new TextBlock();
             name.Text = aname;
             name.FontSize = 14;
             name.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            name.TextWrapping = TextWrapping.Wrap;
+            name.Background = new SolidColorBrush(Colors.Transparent);
             name.TextAlignment = TextAlignment.Center;
-            name.Margin = new Thickness(5, 64, 5, 47);
 
             ToggleSwitch toggle = new ToggleSwitch();
             toggle.Margin = new Thickness(0, 110, 25, 0);
@@ -389,7 +386,7 @@ namespace CSA
             grid.Children.Add(name);
             panel.Children.Insert(0, grid);
         }
-
+       
         private void EditUser_Click(object sender, RoutedEventArgs e)
         {
             FrameworkElement w = sender as FrameworkElement;
@@ -417,5 +414,64 @@ namespace CSA
                     break;
             }
         }
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //closing verification
+        }
+      
+
+        private bool IsTimedIn(string v)
+        { 
+            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
+            SqlCommand command = new SqlCommand("SELECT * from Attendance where Studno = '" + v + "'", conn);
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            DataTable dt = ds.Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                IsIn = true;
+            }
+            else if (dt.Rows.Count == 0)
+            {
+                IsIn = false;
+            }                
+            return IsIn;
+        }
+
+        private bool IsPeerAdviser(string idno)
+        {
+            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
+            SqlCommand command = new SqlCommand("SELECT * from PeerAdviser where Studno = '" + idno + "'", conn);
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            DataTable dt = ds.Tables[0];
+            if (dt.Rows.Count > 0)
+            {   
+                IsPeer = true;
+            }
+            else
+                IsPeer = false;
+            return IsPeer;
+        }
+
+        private void UpdateCredentials(string idno)
+        {
+            SqlConnection conn = new SqlConnection(Settings.ConnectionString);
+            SqlCommand command = new SqlCommand("SELECT Name, Program, Year from Students where Studno = '" + idno + "'", conn);
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            DataTable dt = ds.Tables[0];
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                NameLbl.Content = Convert.ToString(dr[0]);
+                ProgLbl.Content = Convert.ToString(dr[1]);
+                YearLbl.Content = Convert.ToString(dr[2]);
+            }
+        }
+
     }
 }
