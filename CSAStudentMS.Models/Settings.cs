@@ -7,6 +7,6 @@ namespace CSAStudentMS.Models
 {
     public static class Settings
     {
-        public static string ConnectionString = @"Data Source="+Environment.MachineName+@"\SQLEXPRESS;Initial Catalog=CSA;Integrated Security=True";
+        public static string ConnectionString = @"Data Source=DRJAC\SQLEXPRESS;Initial Catalog=CSA;Integrated Security=True";
     }
 }

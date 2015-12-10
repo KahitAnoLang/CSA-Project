@@ -820,53 +820,49 @@
             <Label Content="Username:" FontSize="18" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="21,102,336,416" VerticalAlignment="Center" MaxWidth="96" />
             <Label Content="Password:" FontSize="18" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="26,144,329,374" VerticalAlignment="Center" MaxWidth="96" />
             <TextBox Name="EditUserNameTb" Controls:TextBoxHelper.Watermark="Username" IsEnabled="False" Margin="140,105,111,418"
-                     FontSize="16" SelectionBrush="#FF7E25FF" Controls:TextBoxHelper.ClearTextButton="True" VerticalAlignment="Center"
-                     MinWidth="200" MaxWidth="240" />
+                     FontSize="16" SelectionBrush="#FF7E25FF" Controls:TextBoxHelper.ClearTextButton="True" VerticalAlignment="Center" MinWidth="200" MaxWidth="240" />
             <Button Name="EditUserBtn" Content="✏" Margin="366,105,55,419" Foreground="White"  
                     Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
                     Style="{DynamicResource MyButtonStyle}" MinWidth="30" MaxHeight="30" 
-                    MaxWidth="35" FontSize="21.333" Padding="0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" Click="EditUser_Click">
+                    MaxWidth="35" FontSize="21.333" Padding="0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
             </Button>
             <TextBox Name="EditPassTb" Controls:TextBoxHelper.Watermark="Password" IsEnabled="False" Margin="140,147,111,376"
             	FontSize="16" SelectionBrush="#FF7E25FF" Controls:TextBoxHelper.ClearTextButton="True" VerticalAlignment="Center" MinWidth="200" MaxWidth="240" />
             <Button x:Name="EditPassBtn" Content="✏" Margin="366,147,55,377" Foreground="White"  
             	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
             	Style="{DynamicResource MyButtonStyle}" MinWidth="30" MaxHeight="30" 
-            	MaxWidth="35" FontSize="21.333" Padding="0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" Click="EditUser_Click"/>
-
+            	MaxWidth="35" FontSize="21.333" Padding="0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+            </Button>
             <Button x:Name="SaveBtn" Content="Save"  Foreground="White"  
             	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
-            	Style="{DynamicResource MyButtonStyle}"  
-            	 FontSize="14" Margin="198,197,154,328" VerticalAlignment="Center" />
-
-            <Button x:Name="CancelEditBtn" Content="Cancel"  Foreground="White"  
+            	Style="{DynamicResource MyButtonStyle}" MinWidth="30" 
+            	 FontSize="14" Margin="268,198,67,325" VerticalAlignment="Center" Height="29" MaxWidth="147" >
+            </Button>
+            <Button x:Name="ShowPassBtn" Content="Show time-in keys"  Foreground="White"  
             	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
-            	Style="{DynamicResource MyButtonStyle}" 
-            	FontSize="14" Margin="315,197,35,328" VerticalAlignment="Center"  Click="EditUser_Click" />
-
-            <Label Content="Create Announcement" FontSize="18" IsEnabled="False" Template="{DynamicResource MenuLabel}" 
-                   Margin="10,300,0,218" VerticalAlignment="Center" MaxWidth="190" HorizontalAlignment="Left" />
-
-            <TextBox Name="AnnounceTitleTb" Controls:TextBoxHelper.Watermark="Title" Margin="10,335,0,185"
-            	FontSize="16" SelectionBrush="#FF7E25FF" Controls:TextBoxHelper.ClearTextButton="True" VerticalAlignment="Center" MinWidth="200" Height="34" VerticalContentAlignment="Center" />
+            	Style="{DynamicResource MyButtonStyle}" MinWidth="30"
+            	FontSize="12" Margin="10,198,0,325" VerticalAlignment="Center" Height="29" MaxWidth="200" HorizontalAlignment="Left" Padding="2,6,2,0" Width="127" >
+            </Button>
+            <Label Content="Create Announcement" FontSize="18" IsEnabled="False" Template="{DynamicResource MenuLabel}" Margin="10,300,0,218" VerticalAlignment="Center" MaxWidth="190" HorizontalAlignment="Left" />
+            <TextBox Name="AnnounceTitleTb" Controls:TextBoxHelper.Watermark="Title" Margin="10,342,0,184"
+            	FontSize="16" SelectionBrush="#FF7E25FF" Controls:TextBoxHelper.ClearTextButton="True" VerticalAlignment="Center" MinWidth="200" Height="23" VerticalContentAlignment="Center" />
             <TextBox Name="AnnounceContentTb" Controls:TextBoxHelper.Watermark="Content" Margin="10,373,0,62"
             	FontSize="16" SelectionBrush="#FF7E25FF" VerticalAlignment="Center" MinWidth="200" Height="117" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" />
             <Button x:Name="PublishBtn" Content="Publish"  Foreground="White"  
             	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
             	Style="{DynamicResource MyButtonStyle}" MinWidth="30" 
-            	FontSize="12" Margin="0,501,134,31" VerticalAlignment="Center" MaxWidth="146" MinHeight="20" 
-                    Height="20" Padding="0,2,0,0" HorizontalAlignment="Right" Width="110" />
-
+            	FontSize="12" Margin="0,501,134,31" VerticalAlignment="Center" MaxWidth="146" MinHeight="20" Height="20" Padding="0,2,0,0" HorizontalAlignment="Right" Width="110" >
+            </Button>
             <Button x:Name="CancelBtn" Content="Cancel"  Foreground="White"  
             	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
             	Style="{DynamicResource MyButtonStyle}" MinWidth="30" 
-            	FontSize="12" Margin="0,501,10,31" VerticalAlignment="Center" MaxWidth="146" MinHeight="20" 
-                    Height="20" Padding="0,2,0,0" HorizontalAlignment="Right" Width="110" Click="EditUser_Click" />
+            	FontSize="12" Margin="0,501,10,31" VerticalAlignment="Center" MaxWidth="146" MinHeight="20" Height="20" Padding="0,2,0,0" HorizontalAlignment="Right" Width="110" >
+            </Button>
             <Button x:Name="VeiwAnnouncementBtn" Content="View announcements"  Foreground="White"  
             	Background="#FF9AAFDC" BorderBrush="{x:Null}"  VerticalContentAlignment="Stretch" 
             	Style="{DynamicResource MyButtonStyle}" MinWidth="30" 
-            	FontSize="12" Margin="10,501,0,31" VerticalAlignment="Center" MaxWidth="190" MinHeight="20" 
-                        Height="20" Padding="0,2,0,0" HorizontalAlignment="Left" Width="160" Click="EditUser_Click" />
+            	FontSize="12" Margin="10,501,0,31" VerticalAlignment="Center" MaxWidth="190" MinHeight="20" Height="20" Padding="0,2,0,0" HorizontalAlignment="Left" Width="160" >
+            </Button>
         </Grid>
 
     </Grid>
